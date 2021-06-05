@@ -1,9 +1,15 @@
+// import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter_study/page/camera.dart';
 import 'package:flutter_study/page/home.dart';
 import 'package:flutter_study/test/newroute.dart';
 import 'package:flutter_study/test/tiproute.dart';
 
-void main() => runApp(new MyApp());
+void main() async {
+  // 获取可用摄像头列表，cameras为全局变量
+  // var cameras = await availableCameras();
+  runApp(new MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -22,7 +28,8 @@ class MyApp extends StatelessWidget {
             ), //注册首页路由
         "tip2": (context) {
           return TipRoute(text: ModalRoute.of(context).settings.arguments);
-        }
+        },
+        // "camera": (context) => CameraExampleHome(),
       },
       // home: new MyHomePage(title: 'Flutter Demo Home Page'),
     );

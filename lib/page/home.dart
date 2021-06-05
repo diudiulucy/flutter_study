@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
-
 import 'mydrawer.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Home extends StatefulWidget {
   // Home({Key key}) : super(key: key);
@@ -14,6 +13,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   int _selectedIndex = 1;
   TabController _tabController; //需要定义一个Controller
   List tabs = ["新闻", "历史", "图片"];
+  var _imgPath;
 
   @override
   void initState() {
@@ -75,7 +75,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             children: [
               IconButton(icon: Icon(Icons.home), onPressed: null),
               SizedBox(), //中间的位置空出
-              IconButton(icon: Icon(Icons.calculate), onPressed: null)
+              IconButton(icon: Icon(Icons.calculate), onPressed: _openGallery)
             ],
             mainAxisAlignment: MainAxisAlignment.spaceAround, //均分底部导航栏横向空间
           )),
@@ -89,14 +89,31 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         }).toList(),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.local_see_rounded),
-        onPressed: _onAdd,
-      ),
+          child: Icon(Icons.local_see_rounded),
+          onPressed: () {
+            Navigator.pushNamed(context, 'camera');
+          }
+          // _takePhoto,
+          ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
-  void _onAdd() {}
+  /*拍照*/
+  void _takePhoto() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    setState(() {
+      _imgPath = image;
+    });
+  }
+
+  /*相册*/
+  void _openGallery() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      _imgPath = image;
+    });
+  }
 
   void _onItemTapped(int index) {
     _selectedIndex = index;
