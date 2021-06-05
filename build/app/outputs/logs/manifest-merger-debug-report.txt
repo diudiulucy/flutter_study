@@ -1,10 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-43:12
-INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-43:12
-INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-43:12
-INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-43:12
-MERGED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-43:12
+ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-53:12
+INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-53:12
+INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-53:12
+INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-53:12
+MERGED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-53:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\412798c5ff5129715d71e58ff213e3a7\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\36b6b089b86a4b53f161d1de646d1e60\activity-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\2b55f4dd1ddfb477bff2667016cc0a25\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -27,16 +27,16 @@ INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\debug
 		INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml
-		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-43:12
+		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-53:12
 		INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml
-		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-43:12
+		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-53:12
 		INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:11-69
 application
-ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:8:5-42:19
+ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:8:5-52:19
 MERGED from [androidx.core:core:1.1.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\6b399c2363bb098ebde1725d903cbda0\core-1.1.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.1.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\6b399c2363bb098ebde1725d903cbda0\core-1.1.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\0bf15744f5224b117e4e3c989895e24a\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
@@ -50,7 +50,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\lu
 	android:name
 		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:9:9-57
 activity#com.example.flutter_study.MainActivity
-ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:12:9-36:20
+ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:12:9-46:20
 	android:launchMode
 		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:14:13-43
 	android:hardwareAccelerated
@@ -69,22 +69,34 @@ ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\And
 		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:25:17-54
 	android:name
 		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:24:17-72
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:32:13-35:29
-action#android.intent.action.MAIN
-ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:33:17-68
-	android:name
-		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:33:25-66
-category#android.intent.category.LAUNCHER
-ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:34:17-76
-	android:name
-		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:34:27-74
-meta-data#flutterEmbedding
-ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:39:9-41:33
+meta-data#io.flutter.app.android.SplashScreenUntilFirstFrame
+ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:28:13-30:40
 	android:value
-		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:41:13-30
+		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:30:18-38
 	android:name
-		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:40:13-44
+		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:29:17-82
+meta-data#io.flutter.embedding.android.SplashScreenDrawable
+ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:37:14-40:17
+	android:resource
+		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:39:15-61
+	android:name
+		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:38:15-79
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:42:13-45:29
+action#android.intent.action.MAIN
+ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:43:17-68
+	android:name
+		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:43:25-66
+category#android.intent.category.LAUNCHER
+ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:44:17-76
+	android:name
+		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:44:27-74
+meta-data#flutterEmbedding
+ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:49:9-51:33
+	android:value
+		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:51:13-30
+	android:name
+		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:50:13-44
 uses-sdk
 INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml

@@ -1,7 +1,7 @@
-// Step 4: Create an infinite scrolling lazily loaded list
-
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
+import 'package:flutter_study/page/home.dart';
+import 'package:flutter_study/test/newroute.dart';
+import 'package:flutter_study/test/tiproute.dart';
 
 void main() => runApp(new MyApp());
 
@@ -9,98 +9,90 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Startup Name Generator',
-      theme: new ThemeData(primaryColor: Colors.amber),
-      home: new RandomWords(),
+      title: 'Flutter Demo',
+      initialRoute: "/", //名为"/"的路由作为应用的home(首页)
+      theme: new ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      // 注册路由表
+      routes: {
+        "new_page": (context) => NewRoute(),
+        "/": (context) => Home(
+            // title: "Lucy Demo Home Page",
+            ), //注册首页路由
+        "tip2": (context) {
+          return TipRoute(text: ModalRoute.of(context).settings.arguments);
+        }
+      },
+      // home: new MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class RandomWords extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+  final String title;
+
   @override
-  createState() => new RandomWordsState();
+  _MyHomePageState createState() => new _MyHomePageState();
 }
 
-class RandomWordsState extends State<RandomWords> {
-  final _suggestions = <WordPair>[];
-  final _saved = new Set<WordPair>();
-  final TextStyle _biggerFont = new TextStyle(fontSize: 18.0);
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
 
-  void _pushSaved() {
-    Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      final tiles = _saved.map(
-        (pair) {
-          return new ListTile(
-            title: new Text(
-              pair.asPascalCase,
-              style: _biggerFont,
-            ),
-          );
-        },
-      );
-
-      final divided =
-          ListTile.divideTiles(tiles: tiles, context: context).toList();
-
-      return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Saved suggestions"),
-        ),
-        body: new ListView(
-          children: divided,
-        ),
-      );
-    }));
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Startup Name lucy hhhhh'),
-        actions: <Widget>[
-          new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved),
-        ],
+        title: new Text(widget.title),
       ),
-      body: _buildSuggestions(),
+      body: new Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Text(
+              'You have pushed the button this many times:',
+            ),
+            new Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            FlatButton(
+                textColor: Colors.blue,
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return TipRoute(
+                      text: "hi,我是传过来的参数hhhhhhhhhhhhhh",
+                    );
+                  }));
+                  // Navigator.pushNamed(context, 'new_page');
+                  // Navigator.of(context).pushNamed('new_page', arguments: "hi");
+                  // Navigator.of(context)
+                  //     .pushNamed('tip2', arguments: "hi,我是传过来的参数");
+                },
+                child: Text("open new route"))
+          ],
+        ),
+      ),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: new Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
 
-  Widget _buildSuggestions() {
-    return new ListView.builder(
-      padding: const EdgeInsets.all(16.0),
-      itemBuilder: (context, i) {
-        if (i.isOdd) return new Divider();
-
-        final index = i ~/ 2;
-        if (index >= _suggestions.length) {
-          _suggestions.addAll(generateWordPairs().take(10));
-        }
-        return _buildRow(_suggestions[index]);
-      },
-    );
-  }
-
-  Widget _buildRow(WordPair pair) {
-    final alreadySaved = _saved.contains(pair);
-    return new ListTile(
-      title: new Text(
-        pair.asPascalCase,
-        style: _biggerFont,
-      ),
-      trailing: new Icon(
-        alreadySaved ? Icons.favorite : Icons.favorite_border,
-        color: alreadySaved ? Colors.red : null,
-      ),
-      onTap: () {
-        setState(() {
-          if (alreadySaved) {
-            _saved.remove(pair);
-          } else {
-            _saved.add(pair);
-          }
-        });
-      },
-    );
+class EchoRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    //获取路由参数
+    var args = ModalRoute.of(context).settings.arguments;
   }
 }
