@@ -1,13 +1,17 @@
-// import 'package:camera/camera.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_study/page/camera.dart';
+import 'package:flutter_study/page/camera.dart';
 import 'package:flutter_study/page/home.dart';
 import 'package:flutter_study/test/newroute.dart';
 import 'package:flutter_study/test/tiproute.dart';
 
+List<CameraDescription> cameras;
+
 void main() async {
+  //必须添加下面main()函数中的第一行,否则报错
+  WidgetsFlutterBinding.ensureInitialized();
   // 获取可用摄像头列表，cameras为全局变量
-  // var cameras = await availableCameras();
+  cameras = await availableCameras();
   runApp(new MyApp());
 }
 
@@ -29,7 +33,7 @@ class MyApp extends StatelessWidget {
         "tip2": (context) {
           return TipRoute(text: ModalRoute.of(context).settings.arguments);
         },
-        // "camera": (context) => CameraExampleHome(),
+        "camera": (context) => CameraExampleHome(),
       },
       // home: new MyHomePage(title: 'Flutter Demo Home Page'),
     );

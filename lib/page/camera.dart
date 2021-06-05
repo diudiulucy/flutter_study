@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_study/main.dart';
 import 'package:path_provider/path_provider.dart';
 // import 'package:video_player/video_player.dart';
 
@@ -18,6 +19,34 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   // VideoPlayerController videoController;
   String imagePath; // 图片保存路径
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool enableAudio = true;
+
+  @override
+  void initState() {
+    super.initState();
+    // 监听APP状态改变，是否在前台
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // 如果APP不在在前台
+    if (state == AppLifecycleState.inactive) {
+      controller?.dispose();
+    } else if (state == AppLifecycleState.resumed) {
+      // 在前台
+      if (controller != null) {
+        onNewCameraSelected(controller.description);
+      }
+    }
+  }
+
   //展示预览窗口
   Widget _cameraPreviewWidget() {
     if (controller == null || !controller.value.isInitialized) {
@@ -71,6 +100,71 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     );
   }
 
+  /// 获取不同摄像头的图标（前置、后置、其它）
+  IconData getCameraLensIcon(CameraLensDirection direction) {
+    switch (direction) {
+      case CameraLensDirection.back:
+        return Icons.camera_rear;
+      case CameraLensDirection.front:
+        return Icons.camera_front;
+      case CameraLensDirection.external:
+        return Icons.camera;
+    }
+    throw ArgumentError('Unknown lens direction');
+  }
+
+  // 摄像头选中回调
+  void onNewCameraSelected(CameraDescription cameraDescription) async {
+    if (controller != null) {
+      await controller.dispose();
+    }
+    controller = CameraController(
+      cameraDescription,
+      ResolutionPreset.high,
+      enableAudio: enableAudio,
+    );
+
+    controller.addListener(() {
+      if (mounted) setState(() {});
+      if (controller.value.hasError) {
+        showInSnackBar('Camera error ${controller.value.errorDescription}');
+      }
+    });
+
+    try {
+      await controller.initialize();
+    } on CameraException catch (e) {
+      _showCameraException(e);
+    }
+
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  //展示所有摄像头
+  Widget _cameraTogglesRowWidget() {
+    final List<Widget> toggles = <Widget>[];
+    if (cameras.isEmpty) {
+      return const Text('没有检测到摄像头');
+    } else {
+      for (CameraDescription cameraDescription in cameras) {
+        toggles.add(SizedBox(
+          width: 90,
+          child: RadioListTile<CameraDescription>(
+            title: Icon(getCameraLensIcon(cameraDescription.lensDirection)),
+            groupValue: controller?.description,
+            value: cameraDescription,
+            onChanged: controller != null && controller.value.isRecordingVideo
+                ? null
+                : onNewCameraSelected,
+          ),
+        ));
+      }
+    }
+    return Row(children: toggles);
+  }
+
   void onTakePictureButtonPressed() {
     takePicture().then((String filePath) {
       if (mounted) {
@@ -89,8 +183,10 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
       showInSnackBar("错误，请选择一个相机");
       return null;
     }
-    final Directory extDir = await getApplicationDocumentsDirectory();
-    final String dirPath = '${extDir.path}/Pictures/flutter_study';
+    //https://www.jianshu.com/p/2eafae001f55
+    //getApplicationDocumentsDirectory 如果要让用户看到数据，请考虑改用[getExternalStorageDirectory]。
+    final Directory extDir = await getExternalStorageDirectory();
+    final String dirPath = '${extDir.path}/Pictures';
     await Directory(dirPath).create(recursive: true);
     final String filePath = '$dirPath/${timestamp()}.jpg';
 
@@ -151,16 +247,16 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
           ),
           _captureControlRowWidget(),
           // _toggleAudioWidget(),
-          // Padding(
-          //   padding: const EdgeInsets.all(5.0),
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.start,
-          //     children: <Widget>[
-          //       _cameraTogglesRowWidget(),
-          //       _thumbnailWidget(),
-          //     ],
-          //   ),
-          // ),
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                _cameraTogglesRowWidget(),
+                // _thumbnailWidget(),
+              ],
+            ),
+          ),
         ],
       ),
     );
