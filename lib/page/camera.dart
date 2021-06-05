@@ -50,6 +50,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   //展示预览窗口
   Widget _cameraPreviewWidget() {
     if (controller == null || !controller.value.isInitialized) {
+      onNewCameraSelected(cameras[0]);
       return const Text(
         '选择一个摄像头',
         style: TextStyle(
