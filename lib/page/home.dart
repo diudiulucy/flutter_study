@@ -54,20 +54,31 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             tabs: tabs.map((e) => Tab(text: e)).toList()),
       ),
       drawer: MyDrawer(),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "主页"),
-          BottomNavigationBarItem(icon: Icon(Icons.local_see), label: "拍照"),
-          BottomNavigationBarItem(icon: Icon(Icons.calculate), label: "计算"),
-          // BottomNavigationBarItem(
-          //     icon: Icon(Icons.account_balance), label: "用户"),
-          // BottomNavigationBarItem(
-          //     icon: Icon(Icons.account_balance), label: "用户"),
-        ],
-        currentIndex: _selectedIndex,
-        fixedColor: Colors.blue,
-        onTap: _onItemTapped,
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: <BottomNavigationBarItem>[
+      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "主页"),
+      //     BottomNavigationBarItem(icon: Icon(Icons.local_see), label: "拍照"),
+      //     BottomNavigationBarItem(icon: Icon(Icons.calculate), label: "计算"),
+      //     // BottomNavigationBarItem(
+      //     //     icon: Icon(Icons.account_balance), label: "用户"),
+      //     // BottomNavigationBarItem(
+      //     //     icon: Icon(Icons.account_balance), label: "用户"),
+      //   ],
+      //   currentIndex: _selectedIndex,
+      //   fixedColor: Colors.blue,
+      //   onTap: _onItemTapped,
+      // ),
+      bottomNavigationBar: BottomAppBar(
+          color: Colors.white,
+          shape: CircularNotchedRectangle(), // 底部导航栏打一个圆形的洞
+          child: Row(
+            children: [
+              IconButton(icon: Icon(Icons.home), onPressed: null),
+              SizedBox(), //中间的位置空出
+              IconButton(icon: Icon(Icons.calculate), onPressed: null)
+            ],
+            mainAxisAlignment: MainAxisAlignment.spaceAround, //均分底部导航栏横向空间
+          )),
       body: TabBarView(
         controller: _tabController,
         children: tabs.map((e) {
@@ -78,9 +89,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         }).toList(),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(Icons.local_see_rounded),
         onPressed: _onAdd,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
