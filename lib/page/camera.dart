@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/main.dart';
 import 'package:path_provider/path_provider.dart';
+
+import 'DisplayPictureScreen.dart';
 // import 'package:video_player/video_player.dart';
 
 class CameraExampleHome extends StatefulWidget {
@@ -174,7 +176,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
           // videoController?.dispose();
           // videoController = null;
         });
-        if (filePath != null) showInSnackBar('图片保存在 $filePath');
+        // if (filePath != null) showInSnackBar('图片保存在 $filePath');
       }
     });
   }
@@ -197,6 +199,11 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
 
     try {
       await controller.takePicture(filePath);
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return DisplayPictureScreen(
+          imagePath: filePath,
+        );
+      }));
     } on CameraException catch (e) {
       _showCameraException(e);
       return null;
