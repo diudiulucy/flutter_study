@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Flutter\\Project\\flutter_study\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hi\\values-hi.xml",
+            "outputFile": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hi\\values-hi.xml",
             "map": [
                 {
                     "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\6b399c2363bb098ebde1725d903cbda0\\core-1.1.0\\res\\values-hi\\values-hi.xml",
