@@ -9,7 +9,7 @@ import 'package:flutter_study/test/tiproute.dart';
 List<CameraDescription> cameras;
 
 void main() async {
-  //必须添加下面main()函数中的第一行,否则报错
+  //camera必须添加下面main()函数中的第一行,否则报错 WidgetsFlutterBinding是框架和flutter引擎之间的胶水
   WidgetsFlutterBinding.ensureInitialized();
   // 获取可用摄像头列表，cameras为全局变量
   cameras = await availableCameras();

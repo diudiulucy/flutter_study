@@ -11,7 +11,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
   TabController _tabController; //需要定义一个Controller
   List tabs = ["新闻", "历史", "图片"];
   var _imgPath;
@@ -55,31 +55,35 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             tabs: tabs.map((e) => Tab(text: e)).toList()),
       ),
       drawer: MyDrawer(),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "主页"),
-      //     BottomNavigationBarItem(icon: Icon(Icons.local_see), label: "拍照"),
-      //     BottomNavigationBarItem(icon: Icon(Icons.calculate), label: "计算"),
-      //     // BottomNavigationBarItem(
-      //     //     icon: Icon(Icons.account_balance), label: "用户"),
-      //     // BottomNavigationBarItem(
-      //     //     icon: Icon(Icons.account_balance), label: "用户"),
-      //   ],
-      //   currentIndex: _selectedIndex,
-      //   fixedColor: Colors.blue,
-      //   onTap: _onItemTapped,
-      // ),
-      bottomNavigationBar: BottomAppBar(
-          color: Colors.white,
-          shape: CircularNotchedRectangle(), // 底部导航栏打一个圆形的洞
-          child: Row(
-            children: [
-              IconButton(icon: Icon(Icons.home), onPressed: _openAlbum),
-              SizedBox(), //中间的位置空出
-              IconButton(icon: Icon(Icons.calculate), onPressed: _openGallery)
-            ],
-            mainAxisAlignment: MainAxisAlignment.spaceAround, //均分底部导航栏横向空间
-          )),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "主页"),
+          BottomNavigationBarItem(icon: Icon(Icons.file_present), label: "文档"),
+          BottomNavigationBarItem(icon: Icon(null), label: "拍照"),
+          BottomNavigationBarItem(icon: Icon(Icons.calculate), label: "计算"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "我的"),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.account_balance), label: "用户"),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.account_balance), label: "用户"),
+        ],
+        currentIndex: _selectedIndex,
+        type: BottomNavigationBarType.fixed, // 当items大于3时需要设置此类型
+        fixedColor: Colors.blue,
+        // elevation: 20,
+        onTap: _onItemTapped,
+      ),
+      // bottomNavigationBar: BottomAppBar(
+      //     color: Colors.white,
+      //     shape: CircularNotchedRectangle(), // 底部导航栏打一个圆形的洞
+      //     child: Row(
+      //       children: [
+      //         IconButton(icon: Icon(Icons.home), onPressed: _openAlbum),
+      //         SizedBox(), //中间的位置空出
+      //         IconButton(icon: Icon(Icons.calculate), onPressed: _openGallery)
+      //       ],
+      //       mainAxisAlignment: MainAxisAlignment.spaceAround, //均分底部导航栏横向空间
+      //     )),
       body: TabBarView(
         controller: _tabController,
         children: tabs.map((e) {
@@ -90,7 +94,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         }).toList(),
       ),
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.local_see_rounded),
+          child: Icon(Icons.add_a_photo),
           onPressed: () {
             Navigator.pushNamed(context, 'camera');
           }
@@ -126,6 +130,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   }
 
   void _onItemTapped(int index) {
-    _selectedIndex = index;
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 }

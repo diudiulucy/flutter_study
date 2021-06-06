@@ -43,9 +43,11 @@
                 android:name="io.flutter.embedding.android.NormalTheme"
                 android:resource="@style/NormalTheme" />
             <!-- 去除启动页的白屏 -->
-            <meta-data
+            <!--
+                 <meta-data
                 android:name="io.flutter.app.android.SplashScreenUntilFirstFrame"
-                android:value="true" />
+                 android:value="true"/>
+            -->
             <!--
                  Displays an Android View that continues showing the launch screen
                  Drawable until Flutter paints its first frame, then this splash

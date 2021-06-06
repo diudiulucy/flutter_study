@@ -114,12 +114,6 @@ ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\And
 		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:32:17-54
 	android:name
 		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:31:17-72
-meta-data#io.flutter.app.android.SplashScreenUntilFirstFrame
-ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:35:13-37:40
-	android:value
-		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:37:18-38
-	android:name
-		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:36:17-82
 meta-data#io.flutter.embedding.android.SplashScreenDrawable
 ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:44:14-47:17
 	android:resource
