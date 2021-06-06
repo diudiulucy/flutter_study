@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\animator\\mtrl_fab_transformation_sheet_expand_spec.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\38e527e318a38e32c38ce4c7afa5fbd7\\material-1.0.0\\res\\animator\\mtrl_fab_transformation_sheet_expand_spec.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\animator\\mtrl_btn_state_list_anim.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\38e527e318a38e32c38ce4c7afa5fbd7\\material-1.0.0\\res\\animator\\mtrl_btn_state_list_anim.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\animator\\design_fab_show_motion_spec.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\38e527e318a38e32c38ce4c7afa5fbd7\\material-1.0.0\\res\\animator\\design_fab_show_motion_spec.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\animator\\mtrl_fab_show_motion_spec.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\38e527e318a38e32c38ce4c7afa5fbd7\\material-1.0.0\\res\\animator\\mtrl_fab_show_motion_spec.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\animator\\mtrl_chip_state_list_anim.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\38e527e318a38e32c38ce4c7afa5fbd7\\material-1.0.0\\res\\animator\\mtrl_chip_state_list_anim.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\animator\\design_fab_hide_motion_spec.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\38e527e318a38e32c38ce4c7afa5fbd7\\material-1.0.0\\res\\animator\\design_fab_hide_motion_spec.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\animator\\mtrl_fab_transformation_sheet_collapse_spec.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\38e527e318a38e32c38ce4c7afa5fbd7\\material-1.0.0\\res\\animator\\mtrl_fab_transformation_sheet_collapse_spec.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\animator\\mtrl_btn_unelevated_state_list_anim.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\38e527e318a38e32c38ce4c7afa5fbd7\\material-1.0.0\\res\\animator\\mtrl_btn_unelevated_state_list_anim.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\animator\\mtrl_fab_hide_motion_spec.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\38e527e318a38e32c38ce4c7afa5fbd7\\material-1.0.0\\res\\animator\\mtrl_fab_hide_motion_spec.xml"
+    }
+]

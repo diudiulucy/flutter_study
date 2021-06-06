@@ -23,7 +23,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     _tabController = TabController(length: tabs.length, vsync: this);
     _tabController.addListener(() {
       switch (_tabController.index) {
-        // case 1:
+        case 1:
+          Navigator.pushNamed(context, 'picselect');
+          break;
+        case 2:
+          break;
+        default:
+          break;
       }
     });
   }
@@ -96,7 +102,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add_a_photo),
           onPressed: () {
-            Navigator.pushNamed(context, 'camera');
+            // Navigator.pushNamed(context, 'camera');
+            Navigator.pushNamed(context, 'picselect');
           }
           // _takePhoto,
           ),

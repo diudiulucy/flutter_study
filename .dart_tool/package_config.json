@@ -110,6 +110,12 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "multi_image_picker",
+      "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/multi_image_picker-4.7.15",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "path",
       "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/path-1.8.0-nullsafety.1",
       "packageUri": "lib/",
@@ -236,7 +242,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-06-05T14:08:45.010778Z",
+  "generated": "2021-06-06T06:34:29.401812Z",
   "generator": "pub",
   "generatorVersion": "2.10.5"
 }

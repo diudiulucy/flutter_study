@@ -1,0 +1,4 @@
+#Sun Jun 06 15:35:43 CST 2021
+base.0=E\:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\app\\intermediates\\dex\\release\\mergeDexRelease\\out\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

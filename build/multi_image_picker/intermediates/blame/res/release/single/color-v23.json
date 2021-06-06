@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\color-v23\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\a37d7647168a444700eada6776a3f208\\appcompat-1.0.0\\res\\color-v23\\abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\color-v23\\abc_tint_default.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\a37d7647168a444700eada6776a3f208\\appcompat-1.0.0\\res\\color-v23\\abc_tint_default.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\color-v23\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\a37d7647168a444700eada6776a3f208\\appcompat-1.0.0\\res\\color-v23\\abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\color-v23\\abc_color_highlight_material.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\a37d7647168a444700eada6776a3f208\\appcompat-1.0.0\\res\\color-v23\\abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\color-v23\\abc_tint_btn_checkable.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\a37d7647168a444700eada6776a3f208\\appcompat-1.0.0\\res\\color-v23\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\color-v23\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\a37d7647168a444700eada6776a3f208\\appcompat-1.0.0\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\color-v23\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\a37d7647168a444700eada6776a3f208\\appcompat-1.0.0\\res\\color-v23\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\color-v23\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\a37d7647168a444700eada6776a3f208\\appcompat-1.0.0\\res\\color-v23\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\color-v23\\design_tint_password_toggle.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\38e527e318a38e32c38ce4c7afa5fbd7\\material-1.0.0\\res\\color-v23\\design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\color-v23\\abc_btn_colored_text_material.xml",
+        "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\a37d7647168a444700eada6776a3f208\\appcompat-1.0.0\\res\\color-v23\\abc_btn_colored_text_material.xml"
+    }
+]
