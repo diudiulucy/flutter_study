@@ -33,6 +33,7 @@ dependencies:
   camera: ^0.5.7+4
   path_provider: ^1.6.28
   multi_image_picker: ^4.6.1
+  flutter_swiper: ^1.1.4
   # video_player: ^0.6.4
 # dev_dependencies:
   flutter_test:
@@ -48,6 +49,11 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - lib/assets/images/
+    - lib/assets/images/home/
+    - lib/assets/images/myinfo/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

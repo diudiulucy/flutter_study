@@ -36,8 +36,8 @@
 22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 22-->[androidx.core:core:1.1.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\6b399c2363bb098ebde1725d903cbda0\core-1.1.0\AndroidManifest.xml:24:18-86
 23        android:debuggable="true"
-24        android:icon="@mipmap/ic_launcher"
-24-->E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:15:9-43
+24        android:icon="@mipmap/logo"
+24-->E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:15:9-36
 25        android:label="flutter_study"
 25-->E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:14:9-38
 26        android:requestLegacyExternalStorage="true" >
