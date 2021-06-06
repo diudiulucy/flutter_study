@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_study/page/picselect.dart';
+import 'package:flutter_study/test/newroute.dart';
+import 'package:flutter_study/test/tiproute.dart';
 import 'DisplayPictureScreen.dart';
+import 'album.dart';
+import 'camera.dart';
 import 'mydrawer.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -12,33 +17,22 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   int _selectedIndex = 0;
-  TabController _tabController; //需要定义一个Controller
-  List tabs = ["新闻", "历史", "图片"];
+  //需要定义一个Controller
+  PageController _pageController = PageController(
+    initialPage: 0,
+  );
   var _imgPath;
 
   @override
   void initState() {
     super.initState();
-    // 创建Controller
-    _tabController = TabController(length: tabs.length, vsync: this);
-    _tabController.addListener(() {
-      switch (_tabController.index) {
-        case 1:
-          Navigator.pushNamed(context, 'picselect');
-          break;
-        case 2:
-          break;
-        default:
-          break;
-      }
-    });
   }
 
   //销毁时调用
   @override
   void dispose() {
     super.dispose();
-    _tabController.dispose();
+    _pageController.dispose();
   }
 
   @override
@@ -56,22 +50,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         actions: <Widget>[
           IconButton(icon: Icon(Icons.share), onPressed: () => {})
         ],
-        bottom: TabBar(
-            controller: _tabController,
-            tabs: tabs.map((e) => Tab(text: e)).toList()),
       ),
       drawer: MyDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "主页"),
-          BottomNavigationBarItem(icon: Icon(Icons.file_present), label: "文档"),
+          BottomNavigationBarItem(icon: Icon(Icons.assignment), label: "文档"),
           BottomNavigationBarItem(icon: Icon(null), label: "拍照"),
           BottomNavigationBarItem(icon: Icon(Icons.calculate), label: "计算"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "我的"),
-          // BottomNavigationBarItem(
-          //     icon: Icon(Icons.account_balance), label: "用户"),
-          // BottomNavigationBarItem(
-          //     icon: Icon(Icons.account_balance), label: "用户"),
         ],
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed, // 当items大于3时需要设置此类型
@@ -79,31 +66,22 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         // elevation: 20,
         onTap: _onItemTapped,
       ),
-      // bottomNavigationBar: BottomAppBar(
-      //     color: Colors.white,
-      //     shape: CircularNotchedRectangle(), // 底部导航栏打一个圆形的洞
-      //     child: Row(
-      //       children: [
-      //         IconButton(icon: Icon(Icons.home), onPressed: _openAlbum),
-      //         SizedBox(), //中间的位置空出
-      //         IconButton(icon: Icon(Icons.calculate), onPressed: _openGallery)
-      //       ],
-      //       mainAxisAlignment: MainAxisAlignment.spaceAround, //均分底部导航栏横向空间
-      //     )),
-      body: TabBarView(
-        controller: _tabController,
-        children: tabs.map((e) {
-          return Container(
-            alignment: Alignment.center,
-            child: Text(e, textScaleFactor: 5),
-          );
-        }).toList(),
+      body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: _pageController,
+        children: <Widget>[
+          PickSelect(),
+          Album(),
+          CameraExampleHome(),
+          NewRoute(),
+          TipRoute(text: "测试"),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add_a_photo),
           onPressed: () {
-            // Navigator.pushNamed(context, 'camera');
-            Navigator.pushNamed(context, 'picselect');
+            Navigator.pushNamed(context, 'camera');
+            // Navigator.pushNamed(context, 'picselect');
           }
           // _takePhoto,
           ),
@@ -137,6 +115,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   }
 
   void _onItemTapped(int index) {
+    _pageController.jumpToPage(index);
     setState(() {
       _selectedIndex = index;
     });
