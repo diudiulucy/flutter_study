@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_study/page/album.dart';
 import 'package:flutter_study/page/camera.dart';
 import 'package:flutter_study/page/home.dart';
 import 'package:flutter_study/test/newroute.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
           return TipRoute(text: ModalRoute.of(context).settings.arguments);
         },
         "camera": (context) => CameraExampleHome(),
+        "album": (context) => Album()
       },
       // home: new MyHomePage(title: 'Flutter Demo Home Page'),
     );

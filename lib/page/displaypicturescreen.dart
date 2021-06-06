@@ -9,10 +9,11 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("图片识别"),
-      ),
-      body: Image.file(File(imagePath)),
-    );
+        appBar: AppBar(
+          title: Text("图片识别"),
+        ),
+        body: new Center(
+          child: Image.file(File(imagePath)),
+        ));
   }
 }

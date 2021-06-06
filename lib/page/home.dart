@@ -74,7 +74,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           shape: CircularNotchedRectangle(), // 底部导航栏打一个圆形的洞
           child: Row(
             children: [
-              IconButton(icon: Icon(Icons.home), onPressed: null),
+              IconButton(icon: Icon(Icons.home), onPressed: _openAlbum),
               SizedBox(), //中间的位置空出
               IconButton(icon: Icon(Icons.calculate), onPressed: _openGallery)
             ],
@@ -119,6 +119,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     setState(() {
       _imgPath = image;
     });
+  }
+
+  void _openAlbum() {
+    Navigator.pushNamed(context, 'album');
   }
 
   void _onItemTapped(int index) {
