@@ -176,7 +176,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
           // videoController?.dispose();
           // videoController = null;
         });
-        // if (filePath != null) showInSnackBar('图片保存在 $filePath');
+        if (filePath != null) showInSnackBar('图片保存在 $filePath');
       }
     });
   }
@@ -188,7 +188,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     }
     //https://www.jianshu.com/p/2eafae001f55
     //getApplicationDocumentsDirectory 如果要让用户看到数据，请考虑改用[getExternalStorageDirectory]。
-    final Directory extDir = await getExternalStorageDirectory();
+    final Directory extDir = await getApplicationDocumentsDirectory();
     final String dirPath = '${extDir.path}/Pictures';
     await Directory(dirPath).create(recursive: true);
     final String filePath = '$dirPath/${timestamp()}.jpg';

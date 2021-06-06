@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'DisplayPictureScreen.dart';
 import 'mydrawer.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -110,6 +111,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   /*相册*/
   void _openGallery() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return DisplayPictureScreen(
+        imagePath: image.path,
+      );
+    }));
     setState(() {
       _imgPath = image;
     });
