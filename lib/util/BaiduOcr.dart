@@ -1,5 +1,14 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_study/http/DioManager.dart';
+import 'package:flutter_study/util/Encode.dart';
+
+enum IMAGE_TYPE {
+  URL,
+  IMAGE,
+}
 
 class BaiduOcr {
   static String tokenUrl = "https://aip.baidubce.com/oauth/2.0/token";
@@ -20,9 +29,68 @@ class BaiduOcr {
     });
   }
 
-  static String accurateBasic(String imgUrl) {
+  static String accurateBasic(String path, IMAGE_TYPE imgType) {
     String url = "https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic";
-    print("accurateBasice" + token);
+
+    FormData formData = FormData.from({
+      "access_token": token,
+      "language_type": "CHN_ENG",
+      "detect_direction": "true",
+      // "paragraph": "true",
+      // "probability": "true"
+    });
+
+    if (imgType == IMAGE_TYPE.IMAGE) {
+      EncodeUtil.image2Base64(path).then((data) {
+        String imageBase64 = data;
+
+        formData.add("image", imageBase64);
+        DioManager.getInstance().post(url, formData, (data) {
+          print(data.toString());
+          return data.toString();
+        }, (error) {
+          print("网络异常，请稍后重试");
+        });
+      });
+    } else if ((imgType == IMAGE_TYPE.URL)) {
+      formData.add("url", path);
+      DioManager.getInstance().post(url, formData, (data) {
+        print(data.toString());
+        return data.toString();
+      }, (error) {
+        print("网络异常，请稍后重试");
+      });
+    }
+    return "";
+  }
+
+  static String idCard(path) {
+    String url = "https://aip.baidubce.com/rest/2.0/ocr/v1/idcard";
+    FormData formData = FormData.from({
+      "access_token": token,
+      "id_card_side": "front",
+      "detect_direction": "true",
+      "detect_risk": "false",
+      "detect_photo": "true"
+    });
+
+    EncodeUtil.image2Base64(path).then((data) {
+      String imageBase64 = data;
+
+      formData.add("image", imageBase64);
+      DioManager.getInstance().post(url, formData, (data) {
+        print(data.toString());
+        return data.toString();
+      }, (error) {
+        print("网络异常，请稍后重试");
+      });
+    });
+    return "";
+  }
+
+  static String accurateBasicUrl(String imgUrl) {
+    String url = "https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic";
+    // print("accurateBasice " + token);
     FormData formData = FormData.from({
       "access_token": token,
       "url": imgUrl,
