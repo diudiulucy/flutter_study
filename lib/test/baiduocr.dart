@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_study/http/DioManager.dart';
+import 'package:flutter_study/util/BaiduOcr.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -14,32 +16,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var access_token = 'Unknown';
 
-  void postRequest() async {
-    String url = "https://aip.baidubce.com/oauth/2.0/token";
-    // var API_KEY = "l40T5erM8mnvjvNdgSjLqubt";
-    // var SECRET_KEY = "o82euZbmUYXqO2GnwNPawlTgIQ1VYP4L";
-    Options options = Options(headers: {HttpHeaders.acceptHeader: "*"});
-    Dio dio = Dio();
-    FormData formData = FormData.from({
-      "grant_type": "client_credentials",
-      "client_id": "l40T5erM8mnvjvNdgSjLqubt",
-      "client_secret": "o82euZbmUYXqO2GnwNPawlTgIQ1VYP4L"
+  void postRequest() {
+    var repStr = BaiduOcr.accurateBasic("https://www.baidu.com/img/bdlogo.png");
+    setState(() {
+      access_token = repStr;
     });
+  }
 
-    try {
-      var result;
-      var response = await dio.post(url, options: options, data: formData);
-      if (response.statusCode == HttpStatus.OK) {
-        result = response.data['access_token'];
-      } else {
-        result =
-            'Error getting IP address:\nHttp status ${response.statusCode}';
-      }
-
-      setState(() {
-        access_token = result;
-      });
-    } catch (exception) {}
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override

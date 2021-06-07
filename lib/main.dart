@@ -6,6 +6,7 @@ import 'package:flutter_study/pages/toolbar.dart';
 import 'package:flutter_study/pages/picselect.dart';
 import 'package:flutter_study/test/newroute.dart';
 import 'package:flutter_study/test/tiproute.dart';
+import 'package:flutter_study/util/BaiduOcr.dart';
 import 'package:flutter_study/util/themeutil.dart';
 
 List<CameraDescription> cameras;
@@ -15,6 +16,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // 获取可用摄像头列表，cameras为全局变量
   cameras = await availableCameras();
+  BaiduOcr.initBaiduOcr();
   runApp(new MyApp());
 }
 
