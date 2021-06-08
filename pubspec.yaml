@@ -55,6 +55,8 @@ flutter:
     - lib/assets/images/
     - lib/assets/images/home/
     - lib/assets/images/myinfo/
+    - lib/assets/images/camera/
+    
 
   # To add assets to your application, add an assets section, like this:
   # assets:

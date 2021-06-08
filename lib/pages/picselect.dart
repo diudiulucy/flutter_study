@@ -14,6 +14,7 @@ class _PickSelectState extends State<PickSelect> {
   @override
   void initState() {
     super.initState();
+    loadAssets();
   }
 
   Widget buildGridView() {
@@ -48,7 +49,8 @@ class _PickSelectState extends State<PickSelect> {
         selectedAssets: images,
         cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
         materialOptions: MaterialOptions(
-            startInAllView: true,
+            // 显示所有照片，值为 false 时显示相册
+            startInAllView: false,
             actionBarColor: "#abcdef",
             // actionBarTitle: "Example App",
             allViewTitle: "所有照片",
@@ -76,14 +78,14 @@ class _PickSelectState extends State<PickSelect> {
     // return MaterialApp(
     return Scaffold(
       appBar: AppBar(
-        title: const Text('选择照片'),
+        title: const Text('选择图片'),
       ),
       body: Column(
         children: <Widget>[
-          ElevatedButton(
-            child: Text("Pick images"),
-            onPressed: loadAssets,
-          ),
+          // ElevatedButton(
+          //   child: Text("Pick images"),
+          //   onPressed: loadAssets,
+          // ),
           Expanded(
             child: buildGridView(),
           )

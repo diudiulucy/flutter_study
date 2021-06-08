@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/main.dart';
 import 'package:path_provider/path_provider.dart';
-
 import 'DisplayPictureScreen.dart';
 // import 'package:video_player/video_player.dart';
 
@@ -54,7 +53,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     if (controller == null || !controller.value.isInitialized) {
       onNewCameraSelected(cameras[0]);
       return const Text(
-        '选择一个摄像头',
+        '',
         style: TextStyle(
             color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.w900),
       );
@@ -68,39 +67,61 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
 
   /// 相机工具栏
   Widget _captureControlRowWidget() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.camera_alt),
-          color: Colors.blue,
-          onPressed: controller != null &&
-                  controller.value.isInitialized &&
-                  !controller.value.isRecordingVideo
-              ? onTakePictureButtonPressed
-              : null,
-        ),
-        IconButton(
-            icon: const Icon(Icons.videocam),
-            color: Colors.blue,
-            onPressed: null
-            // controller != null &&
-            //     controller.value.isInitialized &&
-            //     !controller.value.isRecordingVideo
-            //     ? onVideoRecordButtonPressed
-            //     : null,
+    return Container(
+      color: Colors.black,
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            IconButton(
+              icon: Image.asset("lib/assets/images/camera/circle.png",
+                  fit: BoxFit.cover),
+              color: Colors.blue,
+              onPressed: controller != null &&
+                      controller.value.isInitialized &&
+                      !controller.value.isRecordingVideo
+                  ? onTakePictureButtonPressed
+                  : null,
             ),
-        IconButton(
-            icon: const Icon(Icons.stop), color: Colors.red, onPressed: null
-            // controller != null &&
-            //     controller.value.isInitialized &&
-            //     controller.value.isRecordingVideo
-            //     ? onStopButtonPressed
-            //     : null,
-            )
-      ],
+          ],
+        ),
+      ),
     );
+    // );
+    // return Row(
+    //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //   mainAxisSize: MainAxisSize.max,
+    //   children: <Widget>[
+    //     IconButton(
+    //       icon: const Icon(Icons.camera_alt),
+    //       color: Colors.blue,
+    //       onPressed: controller != null &&
+    //               controller.value.isInitialized &&
+    //               !controller.value.isRecordingVideo
+    //           ? onTakePictureButtonPressed
+    //           : null,
+    //     ),
+    //     IconButton(
+    //         icon: const Icon(Icons.videocam),
+    //         color: Colors.blue,
+    //         onPressed: null
+    //         // controller != null &&
+    //         //     controller.value.isInitialized &&
+    //         //     !controller.value.isRecordingVideo
+    //         //     ? onVideoRecordButtonPressed
+    //         //     : null,
+    //         ),
+    //     IconButton(
+    //         icon: const Icon(Icons.stop), color: Colors.red, onPressed: null
+    //         // controller != null &&
+    //         //     controller.value.isInitialized &&
+    //         //     controller.value.isRecordingVideo
+    //         //     ? onStopButtonPressed
+    //         //     : null,
+    //         )
+    //   ],
+    // );
   }
 
   /// 获取不同摄像头的图标（前置、后置、其它）
@@ -230,41 +251,32 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: const Text('拍照'),
+        toolbarHeight: 60,
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.black,
+        // title: const Text('拍照'),
       ),
       body: Column(
         children: <Widget>[
           Expanded(
             child: Container(
-              child: Padding(
-                padding: const EdgeInsets.all(1.0),
-                child: Center(
-                  child: _cameraPreviewWidget(),
-                ),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.black,
-                border: Border.all(
-                  color: controller != null && controller.value.isRecordingVideo
-                      ? Colors.redAccent
-                      : Colors.grey,
-                  width: 3.0,
-                ),
+              child: Center(
+                child: _cameraPreviewWidget(),
               ),
             ),
           ),
           _captureControlRowWidget(),
           // _toggleAudioWidget(),
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                _cameraTogglesRowWidget(),
-                // _thumbnailWidget(),
-              ],
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(5.0),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.start,
+          //   children: <Widget>[
+          //     _cameraTogglesRowWidget(),
+          //     // _thumbnailWidget(),
+          //   ],
+          // ),
+          // ),
         ],
       ),
     );

@@ -23,7 +23,7 @@ class _NavigationState extends State<ToolBar>
   int _selectedIndex = 0;
   List pages = [
     Home(),
-    Album(),
+    PickSelect(),
     CameraExampleHome(),
     MyHomePage(),
     MyInfoPage()

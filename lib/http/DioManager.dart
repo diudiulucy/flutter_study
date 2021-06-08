@@ -44,8 +44,7 @@ class DioManager {
     dio.options.headers = {HttpHeaders.acceptHeader: "*"};
     dio.options.connectTimeout = 5000;
     dio.options.receiveTimeout = 3000;
-    // dio.interceptors
-    //     .add(LogInterceptor(responseBody: GlobalConfig.isDebug)); //是否开启请求日志
+    // dio.interceptors.add(LogInterceptor(responseBody: GlobalConfig.isDebug)); //是否开启请求日志
     // dio.interceptors.add(CookieManager(CookieJar())); //缓存相关类
   }
 
