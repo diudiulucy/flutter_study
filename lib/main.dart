@@ -2,6 +2,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/pages/album.dart';
 import 'package:flutter_study/pages/camera.dart';
+import 'package:flutter_study/pages/login/LoginPage.dart';
 import 'package:flutter_study/pages/toolbar.dart';
 import 'package:flutter_study/pages/picselect.dart';
 import 'package:flutter_study/test/newroute.dart';
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
         },
         "camera": (context) => CameraExampleHome(),
         "album": (context) => Album(),
-        "picselect": (context) => PickSelect()
+        "picselect": (context) => PickSelect(),
+        "login": (context) => LoginPage(),
       },
     );
   }

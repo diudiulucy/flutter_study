@@ -50,7 +50,7 @@ class _PickSelectState extends State<PickSelect> {
         cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
         materialOptions: MaterialOptions(
             // 显示所有照片，值为 false 时显示相册
-            startInAllView: false,
+            startInAllView: true,
             actionBarColor: "#abcdef",
             // actionBarTitle: "Example App",
             allViewTitle: "所有照片",

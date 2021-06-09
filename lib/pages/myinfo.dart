@@ -17,8 +17,6 @@ class MyInfoPageState extends State<MyInfoPage> {
   var userName;
   var icons = [
     Icon(Icons.account_circle),
-    // Icon(Icons.settings),
-    // Icon(Icons.settings),
     Icon(Icons.help_outline),
     Icon(Icons.thumb_up_outlined),
     Icon(Icons.supervisor_account_outlined),
@@ -89,6 +87,7 @@ class MyInfoPageState extends State<MyInfoPage> {
           //     _login();
           //   }
           // });
+          Navigator.pushNamed(context, "login");
         },
         child: avatarContainer,
       );

@@ -58,9 +58,13 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
             color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.w900),
       );
     } else {
-      return AspectRatio(
-        aspectRatio: controller.value.aspectRatio,
-        child: CameraPreview(controller),
+      return Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: AspectRatio(
+          aspectRatio: controller.value.aspectRatio,
+          child: CameraPreview(controller),
+        ),
       );
     }
   }
@@ -197,7 +201,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
           // videoController?.dispose();
           // videoController = null;
         });
-        if (filePath != null) showInSnackBar('图片保存在 $filePath');
+        // if (filePath != null) showInSnackBar('图片保存在 $filePath');
       }
     });
   }
@@ -246,6 +250,52 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(message)));
   }
 
+  Widget _cameraWidget() {
+    return Expanded(
+      flex: 1,
+      child: Stack(
+        children: <Widget>[_cameraPreviewWidget(), _cameraScan()],
+      ),
+    );
+  }
+
+  Widget _cameraScan() {
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      padding: EdgeInsets.symmetric(vertical: 30),
+      child: Image.asset("images/scan.png"),
+    );
+  }
+
+  Widget _cameraButton() {
+    return GestureDetector(
+      onTap: onTakePictureButtonPressed,
+      child: Container(
+        height: 70,
+        color: Colors.black,
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Stack(
+          children: <Widget>[
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Text("返回", style: TextStyle(color: Colors.white)),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: GestureDetector(
+                  onTap: onTakePictureButtonPressed,
+                  child: Icon(Icons.camera_alt, color: Colors.white, size: 50)),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -256,29 +306,19 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
         backgroundColor: Colors.black,
         // title: const Text('拍照'),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Container(
+      body: cameras == null
+          ? Container(
               child: Center(
-                child: _cameraPreviewWidget(),
+                child: Text("加載中..."),
+              ),
+            )
+          : Container(
+              width: double.infinity,
+              height: double.infinity,
+              child: Column(
+                children: <Widget>[_cameraWidget(), _cameraButton()],
               ),
             ),
-          ),
-          _captureControlRowWidget(),
-          // _toggleAudioWidget(),
-          // Padding(
-          //   padding: const EdgeInsets.all(5.0),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.start,
-          //   children: <Widget>[
-          //     _cameraTogglesRowWidget(),
-          //     // _thumbnailWidget(),
-          //   ],
-          // ),
-          // ),
-        ],
-      ),
     );
   }
 }
