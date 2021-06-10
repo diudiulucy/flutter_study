@@ -10,6 +10,8 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../main.dart';
 // import 'package:stmy_mobile/plugin/amap/amap_location.dart';
 // import 'package:stmy_mobile/plugin/amap/amap_location_option.dart';
 // import 'package:stmy_mobile/utils/permission_util.dart';
@@ -64,12 +66,15 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
       setState(() {
         _takeStatus = TakeStatus.preparing;
       });
-      List cameras = await availableCameras();
+      // List cameras = await availableCameras();
+      // print("xiangjilieb ");
+      // print(cameras.length);
       _cameraController = CameraController(
-        cameras[0],
+        cameras.first,
+        // _cameraController.description,
         ResolutionPreset.high,
         enableAudio: false,
-        imageFormatGroup: ImageFormatGroup.jpeg,
+        // imageFormatGroup: ImageFormatGroup.jpeg,
       );
       _cameraController.addListener(() {
         if (mounted) setState(() {});
@@ -195,18 +200,31 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
   }
 
   Widget _buildTopBar() {
-    String flashIcon = 'assets/icon-flash-auto.png';
+    Icon flashIcon = Icon(
+      Icons.flash_auto,
+      size: 32,
+    );
+
     if (_cameraController != null && _cameraController.value.isInitialized) {
       switch (_cameraController.value.flashMode) {
         case FlashMode.auto:
-          flashIcon = 'assets/icon-flash-auto.png';
+          flashIcon = Icon(
+            Icons.flash_auto,
+            size: 32,
+          );
           break;
         case FlashMode.off:
-          flashIcon = 'assets/icon-flash-off.png';
+          flashIcon = Icon(
+            Icons.flash_off,
+            size: 32,
+          );
           break;
         case FlashMode.always:
         case FlashMode.torch:
-          flashIcon = 'assets/icon-flash-on.png';
+          flashIcon = Icon(
+            Icons.flash_on,
+            size: 32,
+          );
           break;
       }
     }
@@ -230,13 +248,7 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
                 ),
                 onPressed: () => Navigator.of(context).pop()),
             IconButton(
-                color: Colors.white,
-                icon: Image.asset(
-                  flashIcon,
-                  width: 32,
-                  height: 32,
-                ),
-                onPressed: _toggleFlash)
+                color: Colors.white, icon: flashIcon, onPressed: _toggleFlash)
           ],
         ));
   }
@@ -252,14 +264,14 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
               color: Colors.black.withOpacity(0.5),
               padding: EdgeInsets.all(10),
               borderSide: BorderSide(color: Colors.grey),
-              child: Icon(Icons.close),
+              child: Icon(Icons.close, color: Colors.white),
               onPressed: _cancel),
           OutlineButton(
               shape: CircleBorder(),
               color: Colors.black.withOpacity(0.5),
               padding: EdgeInsets.all(10),
               borderSide: BorderSide(color: Colors.grey),
-              child: Icon(Icons.done),
+              child: Icon(Icons.done, color: Colors.white),
               onPressed: _confirm)
         ],
       );
