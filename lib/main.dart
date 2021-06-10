@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         "tip2": (context) {
           return TipRoute(text: ModalRoute.of(context).settings.arguments);
         },
-        "camera": (context) => CameraExampleHome(),
+        "camera": (context) => WatermarkPhoto(),
         "album": (context) => Album(),
         "picselect": (context) => PickSelect(),
         "login": (context) => LoginPage(),

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/pages/myinfo.dart';
@@ -24,7 +26,7 @@ class _NavigationState extends State<ToolBar>
   List pages = [
     Home(),
     PickSelect(),
-    CameraExampleHome(),
+    WatermarkPhoto(),
     MyHomePage(),
     MyInfoPage()
   ];
@@ -76,9 +78,13 @@ class _NavigationState extends State<ToolBar>
       body: pages[_selectedIndex],
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add_a_photo),
-          onPressed: () {
-            Navigator.pushNamed(context, 'camera');
+          onPressed: () async {
+            // Navigator.pushNamed(context, 'camera');
             // Navigator.pushNamed(context, 'picselect');
+            final File pickedFile = await takeWatermarkPhoto(context);
+            if (pickedFile != null) {
+              // 可通过Image.file()来显示图片
+            }
           }
           // _takePhoto,
           ),

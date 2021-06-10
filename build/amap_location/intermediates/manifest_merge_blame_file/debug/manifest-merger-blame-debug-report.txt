@@ -1,0 +1,83 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.jzoom.amaplocation" >
+4
+5    <uses-sdk android:minSdkVersion="16" />
+5-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml
+6
+7    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+8    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+8-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:5:5-78
+8-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:5:22-76
+9    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+10    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+10-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:7:5-75
+10-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:7:22-73
+11    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+12    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+12-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:9:5-75
+12-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:9:22-73
+13    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+13-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:10:5-78
+13-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:10:22-76
+14
+15    <!-- 请求网络 -->
+16    <uses-permission android:name="android.permission.INTERNET" />
+16-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:13:5-66
+16-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:13:22-64
+17
+18    <!-- 不是SDK需要的权限，是示例中的后台唤醒定位需要的权限 -->
+19    <uses-permission android:name="android.permission.WAKE_LOCK" />
+19-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:16:5-67
+19-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:16:22-65
+20
+21    <!-- 需要运行时注册的权限 -->
+22    <!-- 用于进行网络定位 -->
+23    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+23-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:20:5-80
+23-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:20:22-78
+24    <!-- 用于访问GPS定位 -->
+25    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+25-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:22:5-78
+25-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:22:22-76
+26    <!-- 用于提高GPS定位速度 -->
+27    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+27-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:24:5-88
+27-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:24:22-86
+28    <!-- 写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据 -->
+29    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+29-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:26:5-80
+29-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:26:22-78
+30    <!-- 读取缓存数据 -->
+31    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+31-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:28:5-79
+31-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:28:22-77
+32
+33    <!-- 用于读取手机当前的状态 -->
+34    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+34-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:31:5-74
+34-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:31:22-72
+35
+36    <!-- 更改设置 -->
+37    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+37-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:34:5-72
+37-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:34:22-70
+38
+39    <application>
+39-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:37:5-47:19
+40
+41        <!-- 设置key -->
+42        <meta-data
+42-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:40:9-42:42
+43            android:name="com.amap.api.v2.apikey"
+43-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:41:13-50
+44            android:value="dollar_openBracket_AMAP_KEY_closeBracket" />
+44-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:42:13-40
+45        <!-- 定位需要的服务 -->
+46        <service android:name="com.amap.api.location.APSService" >
+46-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:44:9-45:19
+46-->C:\Users\lucy\AppData\Local\Pub\Cache\hosted\pub.flutter-io.cn\amap_location-0.2.0\android\src\main\AndroidManifest.xml:44:18-65
+47        </service>
+48    </application>
+49
+50</manifest>

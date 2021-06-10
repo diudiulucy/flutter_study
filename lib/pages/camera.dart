@@ -1,324 +1,398 @@
+import 'dart:async';
 import 'dart:io';
-import 'package:camera/camera.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_study/main.dart';
-import 'package:path_provider/path_provider.dart';
-import 'DisplayPictureScreen.dart';
-// import 'package:video_player/video_player.dart';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
 
-class CameraExampleHome extends StatefulWidget {
+// import 'package:amap_location/amap_location.dart';
+import 'package:camera/camera.dart';
+import 'package:date_format/date_format.dart';
+// import 'package:date_format/date_format.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:path_provider/path_provider.dart';
+// import 'package:stmy_mobile/plugin/amap/amap_location.dart';
+// import 'package:stmy_mobile/plugin/amap/amap_location_option.dart';
+// import 'package:stmy_mobile/utils/permission_util.dart';
+// import 'package:xfile/xfile.dart';
+
+class WatermarkPhoto extends StatefulWidget {
+  static const String SAVE_DIR = 'tempImage';
+
+  final double aspectRatio;
+  final double pixelRatio;
+
+  WatermarkPhoto({this.aspectRatio, this.pixelRatio});
+
   @override
-  State<StatefulWidget> createState() {
-    return new _CameraExampleHomeState();
-  }
+  _WatermarkPhotoState createState() => _WatermarkPhotoState();
 }
 
-class _CameraExampleHomeState extends State<CameraExampleHome>
+class _WatermarkPhotoState extends State<WatermarkPhoto>
     with WidgetsBindingObserver {
-  CameraController controller;
-  // VideoPlayerController videoController;
-  String imagePath; // 图片保存路径
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  bool enableAudio = true;
+  final GlobalKey _cameraKey = GlobalKey();
+  CameraController _cameraController;
+  String _time;
+  String _address;
+  TakeStatus _takeStatus = TakeStatus.preparing;
+  XFile _curFile;
+  // Timer _timer;
+  bool _isCapturing = false;
 
   @override
   void initState() {
     super.initState();
-    // 监听APP状态改变，是否在前台
     WidgetsBinding.instance.addObserver(this);
+
+    // AMapLocation.init(AMapLocationOption());
+    _time =
+        formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn]);
+    _address = '未知位置';
+    _initCamera();
+  }
+
+  void _initCamera() async {
+    try {
+      // _timer?.cancel();
+      // _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      //   if (mounted) {
+      //     setState(() {
+      //       _time = formatDate(
+      //           DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn]);
+      //     });
+      //   }
+      // });
+      setState(() {
+        _takeStatus = TakeStatus.preparing;
+      });
+      List cameras = await availableCameras();
+      _cameraController = CameraController(
+        cameras[0],
+        ResolutionPreset.high,
+        enableAudio: false,
+        imageFormatGroup: ImageFormatGroup.jpeg,
+      );
+      _cameraController.addListener(() {
+        if (mounted) setState(() {});
+      });
+      await _cameraController.initialize();
+      if (mounted) {
+        setState(() {
+          _takeStatus = TakeStatus.taking;
+        });
+      }
+      // if (await checkLocationPermission()) {
+      //   LocationInfo info = await AMapLocation.getLocation(true);
+      //   if (info.isSuccess()) {
+      //     String address = info.formattedAddress;
+      //     if ((address == null || address.isEmpty) && (info.province != null)) {
+      //       address = info.province + info.city + info.district;
+      //     }
+      //     setState(() {
+      //       _address = address;
+      //     });
+      //   }
+      // }
+    } on CameraException catch (e) {
+      print(e);
+    }
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (_cameraController == null || !_cameraController.value.isInitialized) {
+      return;
+    }
+    if (state == AppLifecycleState.inactive) {
+      _cameraController?.dispose();
+    } else if (state == AppLifecycleState.resumed) {
+      if (_cameraController != null) {
+        _initCamera();
+      }
+    }
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _cameraController?.dispose();
+    // AMapLocation.destroy();
+    // _timer?.cancel();
     super.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    // 如果APP不在在前台
-    if (state == AppLifecycleState.inactive) {
-      controller?.dispose();
-    } else if (state == AppLifecycleState.resumed) {
-      // 在前台
-      if (controller != null) {
-        onNewCameraSelected(controller.description);
-      }
-    }
-  }
-
-  //展示预览窗口
-  Widget _cameraPreviewWidget() {
-    if (controller == null || !controller.value.isInitialized) {
-      onNewCameraSelected(cameras[0]);
-      return const Text(
-        '',
-        style: TextStyle(
-            color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.w900),
-      );
-    } else {
-      return Container(
-        width: double.infinity,
-        height: double.infinity,
-        child: AspectRatio(
-          aspectRatio: controller.value.aspectRatio,
-          child: CameraPreview(controller),
-        ),
-      );
-    }
-  }
-
-  /// 相机工具栏
-  Widget _captureControlRowWidget() {
-    return Container(
-      color: Colors.black,
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            IconButton(
-              icon: Image.asset("lib/assets/images/camera/circle.png",
-                  fit: BoxFit.cover),
-              color: Colors.blue,
-              onPressed: controller != null &&
-                      controller.value.isInitialized &&
-                      !controller.value.isRecordingVideo
-                  ? onTakePictureButtonPressed
-                  : null,
-            ),
-          ],
-        ),
-      ),
-    );
-    // );
-    // return Row(
-    //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //   mainAxisSize: MainAxisSize.max,
-    //   children: <Widget>[
-    //     IconButton(
-    //       icon: const Icon(Icons.camera_alt),
-    //       color: Colors.blue,
-    //       onPressed: controller != null &&
-    //               controller.value.isInitialized &&
-    //               !controller.value.isRecordingVideo
-    //           ? onTakePictureButtonPressed
-    //           : null,
-    //     ),
-    //     IconButton(
-    //         icon: const Icon(Icons.videocam),
-    //         color: Colors.blue,
-    //         onPressed: null
-    //         // controller != null &&
-    //         //     controller.value.isInitialized &&
-    //         //     !controller.value.isRecordingVideo
-    //         //     ? onVideoRecordButtonPressed
-    //         //     : null,
-    //         ),
-    //     IconButton(
-    //         icon: const Icon(Icons.stop), color: Colors.red, onPressed: null
-    //         // controller != null &&
-    //         //     controller.value.isInitialized &&
-    //         //     controller.value.isRecordingVideo
-    //         //     ? onStopButtonPressed
-    //         //     : null,
-    //         )
-    //   ],
-    // );
-  }
-
-  /// 获取不同摄像头的图标（前置、后置、其它）
-  IconData getCameraLensIcon(CameraLensDirection direction) {
-    switch (direction) {
-      case CameraLensDirection.back:
-        return Icons.camera_rear;
-      case CameraLensDirection.front:
-        return Icons.camera_front;
-      case CameraLensDirection.external:
-        return Icons.camera;
-    }
-    throw ArgumentError('Unknown lens direction');
-  }
-
-  // 摄像头选中回调
-  void onNewCameraSelected(CameraDescription cameraDescription) async {
-    if (controller != null) {
-      await controller.dispose();
-    }
-    controller = CameraController(
-      cameraDescription,
-      ResolutionPreset.high,
-      enableAudio: enableAudio,
-    );
-
-    controller.addListener(() {
-      if (mounted) setState(() {});
-      if (controller.value.hasError) {
-        showInSnackBar('Camera error ${controller.value.errorDescription}');
-      }
-    });
-
-    try {
-      await controller.initialize();
-    } on CameraException catch (e) {
-      _showCameraException(e);
-    }
-
-    if (mounted) {
-      setState(() {});
-    }
-  }
-
-  //展示所有摄像头
-  Widget _cameraTogglesRowWidget() {
-    final List<Widget> toggles = <Widget>[];
-    if (cameras.isEmpty) {
-      return const Text('没有检测到摄像头');
-    } else {
-      for (CameraDescription cameraDescription in cameras) {
-        toggles.add(SizedBox(
-          width: 90,
-          child: RadioListTile<CameraDescription>(
-            title: Icon(getCameraLensIcon(cameraDescription.lensDirection)),
-            groupValue: controller?.description,
-            value: cameraDescription,
-            onChanged: controller != null && controller.value.isRecordingVideo
-                ? null
-                : onNewCameraSelected,
-          ),
-        ));
-      }
-    }
-    return Row(children: toggles);
-  }
-
-  void onTakePictureButtonPressed() {
-    takePicture().then((String filePath) {
-      if (mounted) {
-        setState(() {
-          imagePath = filePath;
-          // videoController?.dispose();
-          // videoController = null;
-        });
-        // if (filePath != null) showInSnackBar('图片保存在 $filePath');
-      }
-    });
-  }
-
-  Future<String> takePicture() async {
-    if (!controller.value.isInitialized) {
-      showInSnackBar("错误，请选择一个相机");
-      return null;
-    }
-    //https://www.jianshu.com/p/2eafae001f55
-    //getApplicationDocumentsDirectory 如果要让用户看到数据，请考虑改用[getExternalStorageDirectory]。
-    final Directory extDir = await getApplicationDocumentsDirectory();
-    final String dirPath = '${extDir.path}/Pictures';
-    await Directory(dirPath).create(recursive: true);
-    final String filePath = '$dirPath/${timestamp()}.jpg';
-
-    if (controller.value.isTakingPicture) {
-      return null;
-    }
-
-    try {
-      await controller.takePicture(filePath);
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return DisplayPictureScreen(
-          imagePath: filePath,
-        );
-      }));
-    } on CameraException catch (e) {
-      _showCameraException(e);
-      return null;
-    }
-    return filePath;
-  }
-
-  void _showCameraException(CameraException e) {
-    logError(e.code, e.description);
-    showInSnackBar('Error: ${e.code}\n${e.description}');
-  }
-
-  void logError(String code, String message) =>
-      print('Error: $code\nError Message: $message');
-
-  String timestamp() => DateTime.now().millisecondsSinceEpoch.toString();
-
-  void showInSnackBar(String message) {
-    _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(message)));
-  }
-
-  Widget _cameraWidget() {
-    return Expanded(
-      flex: 1,
-      child: Stack(
-        children: <Widget>[_cameraPreviewWidget(), _cameraScan()],
-      ),
-    );
-  }
-
-  Widget _cameraScan() {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 30),
-      child: Image.asset("images/scan.png"),
-    );
-  }
-
-  Widget _cameraButton() {
-    return GestureDetector(
-      onTap: onTakePictureButtonPressed,
-      child: Container(
-        height: 70,
-        color: Colors.black,
-        alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        child: Stack(
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Text("返回", style: TextStyle(color: Colors.white)),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: GestureDetector(
-                  onTap: onTakePictureButtonPressed,
-                  child: Icon(Icons.camera_alt, color: Colors.white, size: 50)),
-            )
-          ],
-        ),
-      ),
-    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(
-        toolbarHeight: 60,
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.black,
-        // title: const Text('拍照'),
+      backgroundColor: Colors.black,
+      body: Stack(
+        children: [
+          _buildCameraArea(),
+          _buildTopBar(),
+          _buildAction(),
+        ],
       ),
-      body: cameras == null
-          ? Container(
-              child: Center(
-                child: Text("加載中..."),
-              ),
-            )
-          : Container(
-              width: double.infinity,
-              height: double.infinity,
-              child: Column(
-                children: <Widget>[_cameraWidget(), _cameraButton()],
-              ),
-            ),
     );
   }
+
+  Widget _buildCameraArea() {
+    Widget area;
+    if (_takeStatus == TakeStatus.confirm && _curFile != null) {
+      area = Image.file(
+        File(_curFile.path),
+        fit: BoxFit.fitWidth,
+      );
+    } else if (_cameraController != null &&
+        _cameraController.value.isInitialized) {
+      final double screenWidth = MediaQuery.of(context).size.width;
+      area = ClipRect(
+        child: OverflowBox(
+            alignment: Alignment.center,
+            child: FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Container(
+                  width: screenWidth,
+                  height: screenWidth * _cameraController.value.aspectRatio,
+                  child: CameraPreview(_cameraController),
+                ))),
+      );
+    } else {
+      area = Container(
+        color: Colors.black,
+      );
+    }
+
+    return Center(
+      child: RepaintBoundary(
+        key: _cameraKey,
+        child: Stack(
+          children: [
+            AspectRatio(
+              aspectRatio: widget.aspectRatio ?? 4 / 3,
+              child: area,
+            ),
+            Positioned(
+                left: 10,
+                right: 120,
+                bottom: 10,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _time ?? '',
+                      style: TextStyle(color: Colors.white, fontSize: 13),
+                    ),
+                    Text(
+                      _address ?? '',
+                      style: TextStyle(color: Colors.white, fontSize: 13),
+                    ),
+                  ],
+                )),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTopBar() {
+    String flashIcon = 'assets/icon-flash-auto.png';
+    if (_cameraController != null && _cameraController.value.isInitialized) {
+      switch (_cameraController.value.flashMode) {
+        case FlashMode.auto:
+          flashIcon = 'assets/icon-flash-auto.png';
+          break;
+        case FlashMode.off:
+          flashIcon = 'assets/icon-flash-off.png';
+          break;
+        case FlashMode.always:
+        case FlashMode.torch:
+          flashIcon = 'assets/icon-flash-on.png';
+          break;
+      }
+    }
+
+    if (_takeStatus == TakeStatus.confirm) {
+      return Container();
+    }
+
+    return Positioned(
+        top: MediaQuery.of(context).padding.top + 10,
+        left: 10,
+        right: 10,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+                color: Colors.white,
+                icon: Icon(
+                  Icons.arrow_back,
+                  size: 32,
+                ),
+                onPressed: () => Navigator.of(context).pop()),
+            IconButton(
+                color: Colors.white,
+                icon: Image.asset(
+                  flashIcon,
+                  width: 32,
+                  height: 32,
+                ),
+                onPressed: _toggleFlash)
+          ],
+        ));
+  }
+
+  Widget _buildAction() {
+    Widget child;
+    if (_takeStatus == TakeStatus.confirm) {
+      child = Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          OutlineButton(
+              shape: CircleBorder(),
+              color: Colors.black.withOpacity(0.5),
+              padding: EdgeInsets.all(10),
+              borderSide: BorderSide(color: Colors.grey),
+              child: Icon(Icons.close),
+              onPressed: _cancel),
+          OutlineButton(
+              shape: CircleBorder(),
+              color: Colors.black.withOpacity(0.5),
+              padding: EdgeInsets.all(10),
+              borderSide: BorderSide(color: Colors.grey),
+              child: Icon(Icons.done),
+              onPressed: _confirm)
+        ],
+      );
+    } else {
+      child = OutlineButton(
+          shape: CircleBorder(),
+          color: Colors.black.withOpacity(0.5),
+          padding: EdgeInsets.all(8),
+          borderSide: BorderSide(color: Colors.grey),
+          child: Icon(
+            Icons.camera,
+            color: Colors.white,
+            size: 48,
+          ),
+          onPressed: _takePicture);
+    }
+
+    return Positioned(bottom: 50, left: 50, right: 50, child: child);
+  }
+
+  /// 切换闪光灯
+  void _toggleFlash() {
+    if (_cameraController == null) return;
+
+    switch (_cameraController.value.flashMode) {
+      case FlashMode.auto:
+        _cameraController.setFlashMode(FlashMode.always);
+        break;
+      case FlashMode.off:
+        _cameraController.setFlashMode(FlashMode.auto);
+        break;
+      case FlashMode.always:
+      case FlashMode.torch:
+        _cameraController.setFlashMode(FlashMode.off);
+        break;
+    }
+  }
+
+  /// 拍照
+  void _takePicture() async {
+    if (_cameraController == null || _cameraController.value.isTakingPicture)
+      return;
+    // _timer?.cancel();
+
+    XFile file = await _cameraController.takePicture();
+    setState(() {
+      _curFile = file;
+      _takeStatus = TakeStatus.confirm;
+    });
+  }
+
+  /// 取消。重新拍照
+  void _cancel() {
+    setState(() {
+      _takeStatus = TakeStatus.preparing;
+    });
+    _cameraController?.dispose();
+    _initCamera();
+  }
+
+  /// 确认。返回图片数据
+  void _confirm() async {
+    if (_isCapturing) return;
+    _isCapturing = true;
+    try {
+      RenderRepaintBoundary boundary =
+          _cameraKey.currentContext.findRenderObject();
+      ui.Image image =
+          await boundary.toImage(pixelRatio: widget.pixelRatio ?? 2.0);
+      ByteData byteData =
+          await image.toByteData(format: ui.ImageByteFormat.png);
+      Uint8List imgBytes = byteData.buffer.asUint8List();
+      String basePath = await findSavePath(WatermarkPhoto.SAVE_DIR);
+      File file =
+          File('$basePath/${DateTime.now().millisecondsSinceEpoch}.jpg');
+      file.writeAsBytesSync(imgBytes);
+      Navigator.of(context).pop(file);
+    } catch (e) {
+      print(e);
+    }
+    _isCapturing = false;
+  }
+
+  Future<String> findSavePath([String basePath]) async {
+    final directory = Platform.isAndroid
+        ? await getExternalStorageDirectory()
+        : await getApplicationDocumentsDirectory();
+    if (basePath == null) {
+      return directory.path;
+    }
+    String saveDir = directory.path + "/" + basePath;
+    Directory root = Directory(saveDir);
+    if (!root.existsSync()) {
+      await root.create();
+    }
+    return saveDir;
+  }
+}
+
+enum TakeStatus {
+  /// 准备中
+  preparing,
+
+  /// 拍摄中
+  taking,
+
+  /// 待确认
+  confirm,
+
+  /// 已完成
+  done
+}
+
+Future<File> takeWatermarkPhoto(
+  BuildContext context, {
+  double aspectRatio,
+  double pixelRatio,
+}) async {
+  return await Navigator.of(context).push(PageRouteBuilder(
+    opaque: false,
+    pageBuilder: (BuildContext context, Animation<double> animation,
+        Animation<double> secondaryAnimation) {
+      return WatermarkPhoto(aspectRatio: aspectRatio, pixelRatio: pixelRatio);
+    },
+    transitionsBuilder: (
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child,
+    ) =>
+        FadeTransition(
+      opacity: animation,
+      child: child,
+    ),
+  ));
 }

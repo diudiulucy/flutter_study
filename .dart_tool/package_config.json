@@ -15,9 +15,15 @@
     },
     {
       "name": "camera",
-      "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/camera-0.5.8+17",
+      "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/camera-0.7.0+4",
       "packageUri": "lib/",
-      "languageVersion": "2.1"
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "camera_platform_interface",
+      "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/camera_platform_interface-1.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
     },
     {
       "name": "characters",
@@ -50,8 +56,20 @@
       "languageVersion": "1.20"
     },
     {
+      "name": "cross_file",
+      "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/cross_file-0.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/cupertino_icons-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "date_format",
+      "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/date_format-1.0.9",
       "packageUri": "lib/",
       "languageVersion": "2.0"
     },
@@ -108,6 +126,18 @@
       "rootUri": "file:///E:/Flutter/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "2.2"
+    },
+    {
+      "name": "http",
+      "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/http-0.12.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.4"
+    },
+    {
+      "name": "http_parser",
+      "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/http_parser-3.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
     },
     {
       "name": "image_picker",
@@ -176,6 +206,12 @@
       "languageVersion": "2.1"
     },
     {
+      "name": "pedantic",
+      "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/pedantic-1.9.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "platform",
       "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/platform-2.2.1",
       "packageUri": "lib/",
@@ -190,6 +226,12 @@
     {
       "name": "process",
       "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/process-3.0.13",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "quiver",
+      "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/quiver-2.1.5",
       "packageUri": "lib/",
       "languageVersion": "2.0"
     },
@@ -216,6 +258,12 @@
       "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/stream_channel-2.1.0-nullsafety.1",
       "packageUri": "lib/",
       "languageVersion": "2.10"
+    },
+    {
+      "name": "stream_transform",
+      "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/stream_transform-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
     },
     {
       "name": "string_scanner",
@@ -254,6 +302,12 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "video_player",
+      "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/video_player-0.6.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "win32",
       "rootUri": "file:///C:/Users/lucy/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/win32-1.7.4+1",
       "packageUri": "lib/",
@@ -272,7 +326,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-06-08T13:21:45.359745Z",
+  "generated": "2021-06-10T14:04:36.986922Z",
   "generator": "pub",
   "generatorVersion": "2.10.5"
 }
