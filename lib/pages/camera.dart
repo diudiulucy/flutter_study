@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_study/pages/displaypicturescreen.dart';
 import 'package:path_provider/path_provider.dart';
-
+import 'package:flutter_study/util/BaiduOcr.dart';
 import '../main.dart';
 // import 'package:stmy_mobile/plugin/amap/amap_location.dart';
 // import 'package:stmy_mobile/plugin/amap/amap_location_option.dart';
@@ -34,8 +34,9 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
     with WidgetsBindingObserver {
   final GlobalKey _cameraKey = GlobalKey();
   CameraController _cameraController;
-  TabController _tabController; //需要定义一个Controller
-  List tabs = ["文字识别", "身份证识别", "银行卡识别"];
+  // TabController _tabController; //需要定义一个Controller
+  OCR_TYPE ocrType = OCR_TYPE.BASE;
+  // List tabs = ["文字识别", "身份证识别", "银行卡识别"];
   String _time;
   String _address;
   TakeStatus _takeStatus = TakeStatus.preparing;
@@ -289,11 +290,19 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
               RaisedButton(
                   color: Colors.white,
                   child: new Text('文字识别'),
-                  onPressed: () => Navigator.of(context).pop()),
+                  onPressed: () {
+                    setState(() {
+                      ocrType = OCR_TYPE.BASE;
+                    });
+                  }),
               RaisedButton(
                   color: Colors.white,
                   child: new Text('身份证识别'),
-                  onPressed: _toggleFlash)
+                  onPressed: () {
+                    setState(() {
+                      ocrType = OCR_TYPE.IDCARD;
+                    });
+                  })
             ],
           ),
           OutlineButton(
@@ -354,6 +363,35 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
     // _initCamera();
   }
 
+  void startRecognition() {
+    switch (this.ocrType) {
+      case OCR_TYPE.BASE:
+        BaiduOcr.accurateBasic(_curFile.path, IMAGE_TYPE.IMAGE, (data) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return DisplayPictureScreen(
+                imagePath: _curFile.path,
+                orcType: this.ocrType,
+                text: data.toString());
+          }));
+        });
+        break;
+      case OCR_TYPE.IDCARD:
+        BaiduOcr.idCard(_curFile.path, (data) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return DisplayPictureScreen(
+                imagePath: _curFile.path,
+                orcType: this.ocrType,
+                text: data.toString());
+          }));
+        });
+        break;
+      default:
+        break;
+    }
+
+    print("testImage" + _curFile.path);
+  }
+
   /// 确认。返回图片数据
   void _confirm() async {
     if (_isCapturing) return;
@@ -374,12 +412,7 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
       setState(() {
         _takeStatus = TakeStatus.preparing;
       });
-
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return DisplayPictureScreen(
-          imagePath: file.path,
-        );
-      }));
+      startRecognition();
     } catch (e) {
       print(e);
     }

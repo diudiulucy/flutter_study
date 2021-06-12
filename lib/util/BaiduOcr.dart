@@ -10,6 +10,11 @@ enum IMAGE_TYPE {
   IMAGE,
 }
 
+enum OCR_TYPE {
+  BASE,
+  IDCARD,
+}
+
 class BaiduOcr {
   static String tokenUrl = "https://aip.baidubce.com/oauth/2.0/token";
   static String token = "";
@@ -29,7 +34,8 @@ class BaiduOcr {
     });
   }
 
-  static String accurateBasic(String path, IMAGE_TYPE imgType) {
+  static void accurateBasic(
+      String path, IMAGE_TYPE imgType, Function successCallBack) {
     String url = "https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic";
 
     FormData formData = FormData.from({
@@ -45,26 +51,20 @@ class BaiduOcr {
         String imageBase64 = data;
 
         formData.add("image", imageBase64);
-        DioManager.getInstance().post(url, formData, (data) {
-          print(data.toString());
-          return data.toString();
-        }, (error) {
+        DioManager.getInstance().post(url, formData, successCallBack, (error) {
           print("网络异常，请稍后重试");
         });
       });
     } else if ((imgType == IMAGE_TYPE.URL)) {
       formData.add("url", path);
-      DioManager.getInstance().post(url, formData, (data) {
-        print(data.toString());
-        return data.toString();
-      }, (error) {
+      DioManager.getInstance().post(url, formData, successCallBack, (error) {
         print("网络异常，请稍后重试");
       });
     }
-    return "";
+    // return "";
   }
 
-  static String idCard(path) {
+  static void idCard(path, Function successCallBack) {
     String url = "https://aip.baidubce.com/rest/2.0/ocr/v1/idcard";
     FormData formData = FormData.from({
       "access_token": token,
@@ -78,14 +78,11 @@ class BaiduOcr {
       String imageBase64 = data;
 
       formData.add("image", imageBase64);
-      DioManager.getInstance().post(url, formData, (data) {
-        print(data.toString());
-        return data.toString();
-      }, (error) {
+      DioManager.getInstance().post(url, formData, successCallBack, (error) {
         print("网络异常，请稍后重试");
       });
     });
-    return "";
+    // return "";
   }
 
   static String accurateBasicUrl(String imgUrl) {

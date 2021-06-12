@@ -17,11 +17,11 @@ class _MyHomePageState extends State<MyHomePage> {
   var access_token = 'Unknown';
 
   void postRequest() {
-    var repStr = BaiduOcr.accurateBasic(
-        "https://www.baidu.com/img/bdlogo.png", IMAGE_TYPE.URL);
-    setState(() {
-      access_token = repStr;
-    });
+    // var repStr = BaiduOcr.accurateBasic(
+    //     "https://www.baidu.com/img/bdlogo.png", IMAGE_TYPE.URL);
+    // setState(() {
+    //   access_token = repStr;
+    // });
   }
 
   @override
