@@ -9,6 +9,7 @@ import 'package:date_format/date_format.dart';
 // import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_study/pages/displaypicturescreen.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../main.dart';
@@ -33,6 +34,8 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
     with WidgetsBindingObserver {
   final GlobalKey _cameraKey = GlobalKey();
   CameraController _cameraController;
+  TabController _tabController; //需要定义一个Controller
+  List tabs = ["文字识别", "身份证识别", "银行卡识别"];
   String _time;
   String _address;
   TakeStatus _takeStatus = TakeStatus.preparing;
@@ -172,7 +175,7 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
         child: Stack(
           children: [
             AspectRatio(
-              aspectRatio: widget.aspectRatio ?? 4 / 3,
+              aspectRatio: widget.aspectRatio ?? 5 / 6,
               child: area,
             ),
             Positioned(
@@ -200,9 +203,10 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
   }
 
   Widget _buildTopBar() {
+    double iconSize = 28;
     Icon flashIcon = Icon(
       Icons.flash_auto,
-      size: 32,
+      size: iconSize,
     );
 
     if (_cameraController != null && _cameraController.value.isInitialized) {
@@ -210,20 +214,20 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
         case FlashMode.auto:
           flashIcon = Icon(
             Icons.flash_auto,
-            size: 32,
+            size: iconSize,
           );
           break;
         case FlashMode.off:
           flashIcon = Icon(
             Icons.flash_off,
-            size: 32,
+            size: iconSize,
           );
           break;
         case FlashMode.always:
         case FlashMode.torch:
           flashIcon = Icon(
             Icons.flash_on,
-            size: 32,
+            size: iconSize,
           );
           break;
       }
@@ -235,15 +239,15 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
 
     return Positioned(
         top: MediaQuery.of(context).padding.top + 10,
-        left: 10,
-        right: 10,
+        left: 5,
+        right: 5,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
                 color: Colors.white,
                 icon: Icon(
-                  Icons.arrow_back,
+                  Icons.navigate_before,
                   size: 32,
                 ),
                 onPressed: () => Navigator.of(context).pop()),
@@ -276,17 +280,35 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
         ],
       );
     } else {
-      child = OutlineButton(
-          shape: CircleBorder(),
-          color: Colors.black.withOpacity(0.5),
-          padding: EdgeInsets.all(8),
-          borderSide: BorderSide(color: Colors.grey),
-          child: Icon(
-            Icons.camera,
-            color: Colors.white,
-            size: 48,
+      child = Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              RaisedButton(
+                  color: Colors.white,
+                  child: new Text('文字识别'),
+                  onPressed: () => Navigator.of(context).pop()),
+              RaisedButton(
+                  color: Colors.white,
+                  child: new Text('身份证识别'),
+                  onPressed: _toggleFlash)
+            ],
           ),
-          onPressed: _takePicture);
+          OutlineButton(
+              shape: CircleBorder(),
+              color: Colors.grey,
+              padding: EdgeInsets.all(2),
+              borderSide: BorderSide(color: Colors.grey),
+              child: Icon(
+                Icons.circle,
+                color: Colors.white,
+                size: 60,
+              ),
+              onPressed: _takePicture),
+        ],
+      );
     }
 
     return Positioned(bottom: 50, left: 50, right: 50, child: child);
@@ -328,8 +350,8 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
     setState(() {
       _takeStatus = TakeStatus.preparing;
     });
-    _cameraController?.dispose();
-    _initCamera();
+    // _cameraController?.dispose();
+    // _initCamera();
   }
 
   /// 确认。返回图片数据
@@ -348,7 +370,16 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
       File file =
           File('$basePath/${DateTime.now().millisecondsSinceEpoch}.jpg');
       file.writeAsBytesSync(imgBytes);
-      Navigator.of(context).pop(file);
+      // Navigator.of(context).pop(file);
+      setState(() {
+        _takeStatus = TakeStatus.preparing;
+      });
+
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return DisplayPictureScreen(
+          imagePath: file.path,
+        );
+      }));
     } catch (e) {
       print(e);
     }

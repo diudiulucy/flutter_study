@@ -37,6 +37,7 @@ dependencies:
   flutter_swiper: ^1.1.4
   dio: ^1.0.9
   date_format: ^1.0.9
+  # amap_location: ^0.2.0
 # dev_dependencies:
   flutter_test:
     sdk: flutter

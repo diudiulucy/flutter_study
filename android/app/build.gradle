@@ -38,6 +38,9 @@ android {
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        manifestPlaceholders = [
+                AMAP_KEY : "c1d9b4789e76e3597b18e9a907bec77a", /// 高德地图key
+        ]
     }
 
     buildTypes {
