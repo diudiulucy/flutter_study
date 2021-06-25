@@ -10,10 +10,7 @@ enum IMAGE_TYPE {
   IMAGE,
 }
 
-enum OCR_TYPE {
-  BASE,
-  IDCARD,
-}
+enum OCR_TYPE { BASE, IDCARD, BANKCARD, FORM }
 
 class BaiduOcr {
   static String tokenUrl = "https://aip.baidubce.com/oauth/2.0/token";
@@ -105,5 +102,41 @@ class BaiduOcr {
     });
 
     return "";
+  }
+
+  static void bankCard(path, Function successCallBack) {
+    String url = "https://aip.baidubce.com/rest/2.0/ocr/v1/bankcard";
+    FormData formData = FormData.from({
+      "access_token": token,
+      "detect_direction": "true",
+    });
+
+    EncodeUtil.image2Base64(path).then((data) {
+      String imageBase64 = data;
+
+      formData.add("image", imageBase64);
+      DioManager.getInstance().post(url, formData, successCallBack, (error) {
+        print("网络异常，请稍后重试");
+      });
+    });
+    // return "";
+  }
+
+  static void form(path, Function successCallBack) {
+    String url = "https://aip.baidubce.com/rest/2.0/ocr/v1/form";
+    FormData formData = FormData.from({
+      "access_token": token,
+      "table_border": "true",
+    });
+
+    EncodeUtil.image2Base64(path).then((data) {
+      String imageBase64 = data;
+
+      formData.add("image", imageBase64);
+      DioManager.getInstance().post(url, formData, successCallBack, (error) {
+        print("网络异常，请稍后重试");
+      });
+    });
+    // return "";
   }
 }

@@ -285,7 +285,7 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               RaisedButton(
                   color: Colors.white,
@@ -301,6 +301,22 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
                   onPressed: () {
                     setState(() {
                       ocrType = OCR_TYPE.IDCARD;
+                    });
+                  }),
+              // RaisedButton(
+              //     color: Colors.white,
+              //     child: new Text('银行卡识别'),
+              //     onPressed: () {
+              //       setState(() {
+              //         ocrType = OCR_TYPE.BANKCARD;
+              //       });
+              //     }),
+              RaisedButton(
+                  color: Colors.white,
+                  child: new Text('表格'),
+                  onPressed: () {
+                    setState(() {
+                      ocrType = OCR_TYPE.FORM;
                     });
                   })
             ],
@@ -377,6 +393,26 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
         break;
       case OCR_TYPE.IDCARD:
         BaiduOcr.idCard(_curFile.path, (data) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return DisplayPictureScreen(
+                imagePath: _curFile.path,
+                orcType: this.ocrType,
+                text: data.toString());
+          }));
+        });
+        break;
+      case OCR_TYPE.BANKCARD:
+        BaiduOcr.bankCard(_curFile.path, (data) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return DisplayPictureScreen(
+                imagePath: _curFile.path,
+                orcType: this.ocrType,
+                text: data.toString());
+          }));
+        });
+        break;
+      case OCR_TYPE.FORM:
+        BaiduOcr.form(_curFile.path, (data) {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return DisplayPictureScreen(
                 imagePath: _curFile.path,
