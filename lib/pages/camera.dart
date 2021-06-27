@@ -9,6 +9,7 @@ import 'package:date_format/date_format.dart';
 // import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_study/pages/displaypicturescreen.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_study/util/BaiduOcr.dart';
@@ -46,7 +47,18 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
   List<GlobalKey> keys = <GlobalKey>[];
 
   ScrollController _controller = ScrollController();
-  List tabs = ["文字识别", "身份证识别", "银行卡识别", "表格", "票据识别", "银行卡识别", "表格", "票据识别"];
+  List tabs = [
+    // "",
+    "文字识别",
+    "身份证识别",
+    "银行卡识别",
+    "表格",
+    "票据识别",
+    "银行卡识别",
+    "表格",
+    "票据识别",
+    // ""
+  ];
   int curItem = 0;
 
   _WatermarkPhotoState() {
@@ -91,10 +103,13 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
         enableAudio: false,
         // imageFormatGroup: ImageFormatGroup.jpeg,
       );
+
       _cameraController.addListener(() {
         if (mounted) setState(() {});
       });
       await _cameraController.initialize();
+      _cameraController
+          .lockCaptureOrientation(DeviceOrientation.portraitUp); //锁住相机方向
       if (mounted) {
         setState(() {
           _takeStatus = TakeStatus.taking;
@@ -149,54 +164,10 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
           _buildCameraArea(),
           _buildTopBar(),
           _buildAction(),
-          // _buildTabs(),
         ],
       ),
     );
   }
-
-  // Widget _buildTabs() {
-  //   Widget child;
-  //   if (_cameraController != null && _cameraController.value.isInitialized) {
-  //     child = Container(
-  //       height: 40.0,
-  //       // color: Colors.red,
-  //       alignment: Alignment.center,
-  //       // margin: new EdgeInsets.symmetric(vertical: 300.0),
-  //       child: ListView.separated(
-  //           scrollDirection: Axis.horizontal,
-  //           itemCount: tabs.length,
-  //           separatorBuilder: (BuildContext context, int index) => Container(
-  //                 width: 0.0,
-  //                 color: Colors.black,
-  //               ),
-
-  //           // itemExtent: 0.0, //强制高度为50.0
-  //           itemBuilder: (BuildContext context, int index) {
-  //             return Container(
-  //                 // width: 100,
-  //                 child: FlatButton(
-  //                     onPressed: () {
-  //                       setState(() {
-  //                         ocrType = OCR_TYPE.values[index];
-  //                       });
-  //                     },
-  //                     child: Text(
-  //                       tabs[index],
-  //                       style: TextStyle(
-  //                         color: Colors.white,
-  //                         // fontSize: 20.0,
-  //                       ),
-  //                     )));
-  //           }),
-  //     );
-  //   } else {
-  //     child = Container(
-  //       color: Colors.black,
-  //     );
-  //   }
-  //   return Positioned(bottom: 130, left: 0, right: 0, child: child);
-  // }
 
   Widget _buildCameraArea() {
     Widget area;
@@ -230,14 +201,19 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
         key: _cameraKey,
         child: Stack(
           children: [
-            AspectRatio(
-              aspectRatio: widget.aspectRatio ?? 5 / 6,
-              child: area,
+            Positioned(
+              top: 80,
+              left: 0,
+              right: 0,
+              child: AspectRatio(
+                aspectRatio: widget.aspectRatio ?? 5 / 7,
+                child: area,
+              ),
             ),
             Positioned(
                 left: 10,
                 right: 120,
-                bottom: 10,
+                bottom: 200,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -294,7 +270,7 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
     }
 
     return Positioned(
-        top: MediaQuery.of(context).padding.top + 10,
+        top: MediaQuery.of(context).padding.top,
         left: 5,
         right: 5,
         child: Row(
@@ -337,25 +313,29 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
       );
     } else {
       child = Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Icon(Icons.circle, color: Colors.blue[300], size: 7),
           _initView(),
-          OutlineButton(
-              shape: CircleBorder(),
-              color: Colors.grey,
-              padding: EdgeInsets.all(2),
-              borderSide: BorderSide(color: Colors.grey),
-              child: Icon(
-                Icons.circle,
-                color: Colors.white,
-                size: 60,
-              ),
-              onPressed: _takePicture),
+          Padding(
+            padding: const EdgeInsets.only(top: 30.0),
+            child: OutlineButton(
+                shape: CircleBorder(),
+                color: Colors.grey,
+                padding: EdgeInsets.all(2),
+                borderSide: BorderSide(color: Colors.grey),
+                child: Icon(
+                  Icons.circle,
+                  color: Colors.white,
+                  size: 60,
+                ),
+                onPressed: _takePicture),
+          )
         ],
       );
     }
 
-    return Positioned(bottom: 50, left: 10, right: 10, child: child);
+    return Positioned(bottom: 40, left: 10, right: 10, child: child);
   }
 
   void _itemClick(int pos) {
@@ -385,11 +365,11 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
 
   Widget _initView() {
     return Container(
-        height: 40.0,
-        // color: Colors.red,
+        height: 30.0,
         alignment: Alignment.center,
-        // margin: new EdgeInsets.symmetric(vertical: 300.0),
+        // color: Colors.red,
         child: ListView.separated(
+          shrinkWrap: false,
           scrollDirection: Axis.horizontal,
           itemCount: tabs.length,
           separatorBuilder: (BuildContext context, int index) => Container(
@@ -408,8 +388,8 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
     return Container(
         // width: 100,
         key: keys[pos],
-        padding: EdgeInsets.fromLTRB(10, 10, 10, 5),
-        alignment: Alignment.bottomCenter,
+        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+        alignment: Alignment.center,
         child: InkWell(
           onTap: () {
             _itemClick(pos);
@@ -419,22 +399,9 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 14,
-                color: curItem == pos ? Colors.yellow : Colors.white),
+                color: curItem == pos ? Colors.blue[300] : Colors.white),
           ),
         ));
-    // child: FlatButton(
-    //     onPressed: () {
-    //       setState(() {
-    //         ocrType = OCR_TYPE.values[index];
-    //       });
-    //     },
-    //     child: Text(
-    //       tabs[index],
-    //       style: TextStyle(
-    //         color: Colors.white,
-    //         // fontSize: 20.0,
-    //       ),
-    //     )));
   }
 
   /// 切换闪光灯
