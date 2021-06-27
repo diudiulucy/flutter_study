@@ -36,14 +36,13 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
   CameraController _cameraController;
   // TabController _tabController; //需要定义一个Controller
   OCR_TYPE ocrType = OCR_TYPE.BASE;
-  // List tabs = ["文字识别", "身份证识别", "银行卡识别"];
   String _time;
   String _address;
   TakeStatus _takeStatus = TakeStatus.preparing;
   XFile _curFile;
   // Timer _timer;
   bool _isCapturing = false;
-
+  List tabs = ["文字识别", "身份证识别", "银行卡识别", "表格", "票据识别", "银行卡识别", "表格", "票据识别"];
   @override
   void initState() {
     super.initState();
@@ -147,49 +146,44 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
   Widget _buildTabs() {
     Widget child;
     if (_cameraController != null && _cameraController.value.isInitialized) {
-      child = Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          RaisedButton(
-              color: Colors.white,
-              child: new Text('文字识别'),
-              onPressed: () {
-                setState(() {
-                  ocrType = OCR_TYPE.BASE;
-                });
-              }),
-          RaisedButton(
-              color: Colors.white,
-              child: new Text('身份证识别'),
-              onPressed: () {
-                setState(() {
-                  ocrType = OCR_TYPE.IDCARD;
-                });
-              }),
-          // RaisedButton(
-          //     color: Colors.white,
-          //     child: new Text('银行卡识别'),
-          //     onPressed: () {
-          //       setState(() {
-          //         ocrType = OCR_TYPE.BANKCARD;
-          //       });
-          //     }),
-          RaisedButton(
-              color: Colors.white,
-              child: new Text('表格'),
-              onPressed: () {
-                setState(() {
-                  ocrType = OCR_TYPE.FORM;
-                });
-              })
-        ],
+      child = Container(
+        height: 40.0,
+        color: Colors.red,
+        alignment: Alignment.center,
+        // margin: new EdgeInsets.symmetric(vertical: 300.0),
+        child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: tabs.length,
+            separatorBuilder: (BuildContext context, int index) => Container(
+                  width: 0.0,
+                  color: Colors.black,
+                ),
+
+            // itemExtent: 0.0, //强制高度为50.0
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                  // width: 100,
+                  child: FlatButton(
+                      onPressed: () {
+                        setState(() {
+                          ocrType = OCR_TYPE.values[index];
+                        });
+                      },
+                      child: Text(
+                        tabs[index],
+                        style: TextStyle(
+                          color: Colors.white,
+                          // fontSize: 20.0,
+                        ),
+                      )));
+            }),
       );
     } else {
       child = Container(
         color: Colors.black,
       );
     }
-    return Positioned(bottom: 120, left: 0, right: 0, child: child);
+    return Positioned(bottom: 130, left: 0, right: 0, child: child);
   }
 
   Widget _buildCameraArea() {

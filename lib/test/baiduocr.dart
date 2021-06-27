@@ -127,27 +127,68 @@ class _MyHomePageState extends State<MyHomePage> {
 
 Widget buildStack() {
   //通过ConstrainedBox来确保Stack占满屏幕
-  return ConstrainedBox(
-    constraints: BoxConstraints.expand(),
-    child: Stack(
-      alignment: Alignment.center, //指定未定位或部分定位widget的对齐方式
-      fit: StackFit.expand, //未定位widget占满Stack整个空间
-      children: <Widget>[
-        Container(
-          child: Text("Hello world", style: TextStyle(color: Colors.white)),
-          color: Colors.red,
-        ),
-        Positioned(
-          left: 18.0,
-          child: Text("I am Jack"),
-        ),
-        Positioned(
-          top: 18.0,
-          child: Text("Your friend"),
-        )
-      ],
-    ),
+  // return ConstrainedBox(
+  //   constraints: BoxConstraints.expand(),
+  //   child: Stack(
+  //     alignment: Alignment.center, //指定未定位或部分定位widget的对齐方式
+  //     fit: StackFit.expand, //未定位widget占满Stack整个空间
+  //     children: <Widget>[
+  //       Container(
+  //         child: Text("Hello world", style: TextStyle(color: Colors.white)),
+  //         color: Colors.red,
+  //       ),
+  //       Positioned(
+  //         left: 18.0,
+  //         child: Text("I am Jack"),
+  //       ),
+  //       Positioned(
+  //         top: 18.0,
+  //         child: Text("Your friend"),
+  //       )
+  //     ],
+  //   ),
+  // );
+  // Widget child = Positioned(
+  //     // bottom: 120,
+  //     left: 0,
+  //     right: 0,
+  //     child: ListView.builder(
+  //         scrollDirection: Axis.horizontal,
+  //         itemCount: 100,
+  //         itemExtent: 50.0, //强制高度为50.0
+  //         itemBuilder: (BuildContext context, int index) {
+  //           return ListTile(title: Text("$index"));
+  //         }));
+
+  Widget child = Container(
+      // height: 200.0,
+      margin: new EdgeInsets.symmetric(vertical: 300.0),
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: 100,
+          itemExtent: 50.0, //强制高度为50.0
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(title: Text("$index"));
+          }));
+  return Stack(
+    children: [child],
   );
+
+  // Widget child =  ListView.builder(
+  //         scrollDirection: Axis.horizontal,
+  //         itemCount: 100,
+  //         itemExtent: 50.0, //强制高度为50.0
+  //         itemBuilder: (BuildContext context, int index) {
+  //           return ListTile(title: Text("$index"));
+  //         }),
+
+  // return ListView.builder(
+  //     scrollDirection: Axis.horizontal,
+  //     itemCount: 100,
+  //     itemExtent: 50.0, //强制高度为50.0
+  //     itemBuilder: (BuildContext context, int index) {
+  //       return ListTile(title: Text("$index"));
+  //     });
 }
 
 class TestFlowDelegate extends FlowDelegate {
