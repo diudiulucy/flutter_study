@@ -77,6 +77,73 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
         formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn]);
     _address = '未知位置';
     _initCamera();
+    // _controller.addListener(() {
+    //   double minOffset = double.maxFinite;
+    //   int index = 0;
+    //   for (int i = 0; i < keys.length; i++) {
+    //     RenderBox box = keys[i].currentContext.findRenderObject();
+    //     Offset os = box.localToGlobal(Offset.zero);
+
+    //     double w = box.size.width;
+    //     double x = os.dx;
+    //     //   获取屏幕宽高
+    //     double windowW = MediaQuery.of(context).size.width;
+
+    //     //就算当前item距离屏幕中央的相对偏移量
+    //     double rlOffset = windowW / 2 - (x + w / 2);
+
+    //     // print(offset.toString() + ":" + i.toString());
+    //     if (rlOffset.abs() <= minOffset) {
+    //       minOffset = rlOffset;
+    //       index = i;
+    //       // print("min" + minOffset.toString() + ":" + i.toString());
+    //     }
+    //     print("min" + minOffset.toString() + ":" + rlOffset.toString());
+    //   }
+
+    //   setState(() {
+    //     curItem = index;
+    //   });
+    //   // double offset = _controller.offset - minOffset;
+    //   // _controller.jumpTo(offset);
+    //   _scrollItemToCenter(index);
+    //   // ignore: invalid_use_of_protected_member
+    //   // print("111" + _controller.positions.elementAt(0).pixels.toString());
+    // });
+  }
+
+  void fixItem(event) {
+    double minOffset = double.maxFinite;
+    int index = 0;
+    for (int i = 0; i < keys.length; i++) {
+      RenderBox box = keys[i].currentContext.findRenderObject();
+      Offset os = box.localToGlobal(Offset.zero);
+
+      double w = box.size.width;
+      double x = os.dx;
+      //   获取屏幕宽高
+      double windowW = MediaQuery.of(context).size.width;
+
+      //就算当前item距离屏幕中央的相对偏移量
+      double rlOffset = windowW / 2 - (x + w / 2);
+
+      // print(offset.toString() + ":" + i.toString());
+      if (rlOffset.abs() <= minOffset) {
+        minOffset = rlOffset;
+        index = i;
+        // print("min" + minOffset.toString() + ":" + i.toString());
+      }
+      // print("min" + minOffset.toString() + ":" + rlOffset.toString());
+    }
+
+    setState(() {
+      curItem = index;
+    });
+    // double offset = _controller.offset - minOffset;
+    // _controller.jumpTo(offset);
+    _scrollItemToCenter(index);
+    // ignore: invalid_use_of_protected_member
+    // print("111" + _controller.positions.elementAt(0).pixels.toString());
   }
 
   void _initCamera() async {
@@ -368,19 +435,22 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
         height: 30.0,
         alignment: Alignment.center,
         // color: Colors.red,
-        child: ListView.separated(
-          shrinkWrap: false,
-          scrollDirection: Axis.horizontal,
-          itemCount: tabs.length,
-          separatorBuilder: (BuildContext context, int index) => Container(
-            width: 0.0,
-            color: Colors.black,
+        child: new Listener(
+          onPointerUp: fixItem,
+          child: ListView.separated(
+            shrinkWrap: false,
+            scrollDirection: Axis.horizontal,
+            itemCount: tabs.length,
+            separatorBuilder: (BuildContext context, int index) => Container(
+              width: 0.0,
+              color: Colors.black,
+            ),
+            controller: _controller,
+            // itemExtent: 0.0, //强制高度为50.0
+            itemBuilder: (BuildContext context, int index) {
+              return _initItemView(context, index);
+            },
           ),
-          controller: _controller,
-          // itemExtent: 0.0, //强制高度为50.0
-          itemBuilder: (BuildContext context, int index) {
-            return _initItemView(context, index);
-          },
         ));
   }
 
