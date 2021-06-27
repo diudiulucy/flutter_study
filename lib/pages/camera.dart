@@ -42,7 +42,19 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
   XFile _curFile;
   // Timer _timer;
   bool _isCapturing = false;
+  // void Function(int) _itemClick;
+  List<GlobalKey> keys = <GlobalKey>[];
+
+  ScrollController _controller = ScrollController();
   List tabs = ["文字识别", "身份证识别", "银行卡识别", "表格", "票据识别", "银行卡识别", "表格", "票据识别"];
+  int curItem = 0;
+
+  _WatermarkPhotoState() {
+    for (int i = 0; i < tabs.length; i++) {
+      keys.add(GlobalKey(debugLabel: i.toString()));
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -137,54 +149,54 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
           _buildCameraArea(),
           _buildTopBar(),
           _buildAction(),
-          _buildTabs(),
+          // _buildTabs(),
         ],
       ),
     );
   }
 
-  Widget _buildTabs() {
-    Widget child;
-    if (_cameraController != null && _cameraController.value.isInitialized) {
-      child = Container(
-        height: 40.0,
-        color: Colors.red,
-        alignment: Alignment.center,
-        // margin: new EdgeInsets.symmetric(vertical: 300.0),
-        child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemCount: tabs.length,
-            separatorBuilder: (BuildContext context, int index) => Container(
-                  width: 0.0,
-                  color: Colors.black,
-                ),
+  // Widget _buildTabs() {
+  //   Widget child;
+  //   if (_cameraController != null && _cameraController.value.isInitialized) {
+  //     child = Container(
+  //       height: 40.0,
+  //       // color: Colors.red,
+  //       alignment: Alignment.center,
+  //       // margin: new EdgeInsets.symmetric(vertical: 300.0),
+  //       child: ListView.separated(
+  //           scrollDirection: Axis.horizontal,
+  //           itemCount: tabs.length,
+  //           separatorBuilder: (BuildContext context, int index) => Container(
+  //                 width: 0.0,
+  //                 color: Colors.black,
+  //               ),
 
-            // itemExtent: 0.0, //强制高度为50.0
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                  // width: 100,
-                  child: FlatButton(
-                      onPressed: () {
-                        setState(() {
-                          ocrType = OCR_TYPE.values[index];
-                        });
-                      },
-                      child: Text(
-                        tabs[index],
-                        style: TextStyle(
-                          color: Colors.white,
-                          // fontSize: 20.0,
-                        ),
-                      )));
-            }),
-      );
-    } else {
-      child = Container(
-        color: Colors.black,
-      );
-    }
-    return Positioned(bottom: 130, left: 0, right: 0, child: child);
-  }
+  //           // itemExtent: 0.0, //强制高度为50.0
+  //           itemBuilder: (BuildContext context, int index) {
+  //             return Container(
+  //                 // width: 100,
+  //                 child: FlatButton(
+  //                     onPressed: () {
+  //                       setState(() {
+  //                         ocrType = OCR_TYPE.values[index];
+  //                       });
+  //                     },
+  //                     child: Text(
+  //                       tabs[index],
+  //                       style: TextStyle(
+  //                         color: Colors.white,
+  //                         // fontSize: 20.0,
+  //                       ),
+  //                     )));
+  //           }),
+  //     );
+  //   } else {
+  //     child = Container(
+  //       color: Colors.black,
+  //     );
+  //   }
+  //   return Positioned(bottom: 130, left: 0, right: 0, child: child);
+  // }
 
   Widget _buildCameraArea() {
     Widget area;
@@ -327,43 +339,7 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
       child = Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Row(
-          //   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //   children: [
-          //     RaisedButton(
-          //         color: Colors.white,
-          //         child: new Text('文字识别'),
-          //         onPressed: () {
-          //           setState(() {
-          //             ocrType = OCR_TYPE.BASE;
-          //           });
-          //         }),
-          //     RaisedButton(
-          //         color: Colors.white,
-          //         child: new Text('身份证识别'),
-          //         onPressed: () {
-          //           setState(() {
-          //             ocrType = OCR_TYPE.IDCARD;
-          //           });
-          //         }),
-          //     // RaisedButton(
-          //     //     color: Colors.white,
-          //     //     child: new Text('银行卡识别'),
-          //     //     onPressed: () {
-          //     //       setState(() {
-          //     //         ocrType = OCR_TYPE.BANKCARD;
-          //     //       });
-          //     //     }),
-          //     RaisedButton(
-          //         color: Colors.white,
-          //         child: new Text('表格'),
-          //         onPressed: () {
-          //           setState(() {
-          //             ocrType = OCR_TYPE.FORM;
-          //           });
-          //         })
-          //   ],
-          // ),
+          _initView(),
           OutlineButton(
               shape: CircleBorder(),
               color: Colors.grey,
@@ -379,7 +355,86 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
       );
     }
 
-    return Positioned(bottom: 50, left: 50, right: 50, child: child);
+    return Positioned(bottom: 50, left: 10, right: 10, child: child);
+  }
+
+  void _itemClick(int pos) {
+    setState(() {
+      curItem = pos;
+    });
+    _scrollItemToCenter(pos);
+  }
+
+  void _scrollItemToCenter(int pos) {
+    //获取item的尺寸和位置
+    RenderBox box = keys[pos].currentContext.findRenderObject();
+    Offset os = box.localToGlobal(Offset.zero);
+
+    double w = box.size.width;
+    double x = os.dx;
+    //   获取屏幕宽高
+    double windowW = MediaQuery.of(context).size.width;
+
+    //就算当前item距离屏幕中央的相对偏移量
+    double rlOffset = windowW / 2 - (x + w / 2);
+
+    double offset = _controller.offset - rlOffset;
+    _controller.animateTo(offset,
+        duration: Duration(milliseconds: 200), curve: Curves.easeInOut);
+  }
+
+  Widget _initView() {
+    return Container(
+        height: 40.0,
+        // color: Colors.red,
+        alignment: Alignment.center,
+        // margin: new EdgeInsets.symmetric(vertical: 300.0),
+        child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          itemCount: tabs.length,
+          separatorBuilder: (BuildContext context, int index) => Container(
+            width: 0.0,
+            color: Colors.black,
+          ),
+          controller: _controller,
+          // itemExtent: 0.0, //强制高度为50.0
+          itemBuilder: (BuildContext context, int index) {
+            return _initItemView(context, index);
+          },
+        ));
+  }
+
+  Widget _initItemView(BuildContext context, int pos) {
+    return Container(
+        // width: 100,
+        key: keys[pos],
+        padding: EdgeInsets.fromLTRB(10, 10, 10, 5),
+        alignment: Alignment.bottomCenter,
+        child: InkWell(
+          onTap: () {
+            _itemClick(pos);
+          },
+          child: Text(
+            tabs[pos],
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 14,
+                color: curItem == pos ? Colors.yellow : Colors.white),
+          ),
+        ));
+    // child: FlatButton(
+    //     onPressed: () {
+    //       setState(() {
+    //         ocrType = OCR_TYPE.values[index];
+    //       });
+    //     },
+    //     child: Text(
+    //       tabs[index],
+    //       style: TextStyle(
+    //         color: Colors.white,
+    //         // fontSize: 20.0,
+    //       ),
+    //     )));
   }
 
   /// 切换闪光灯

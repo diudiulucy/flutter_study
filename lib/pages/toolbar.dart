@@ -7,6 +7,7 @@ import 'package:flutter_study/pages/picselect.dart';
 import 'package:flutter_study/test/baiduocr.dart';
 import 'package:flutter_study/test/flex.dart';
 import 'package:flutter_study/test/newroute.dart';
+import 'package:flutter_study/test/scrollItem.dart';
 import 'package:flutter_study/test/tabbox.dart';
 import 'package:flutter_study/test/tabboxb.dart';
 import 'package:flutter_study/test/tabboxc.dart';
@@ -31,7 +32,8 @@ class _NavigationState extends State<ToolBar>
     Home(),
     PickSelect(),
     WatermarkPhoto(),
-    MyHomePage(),
+    // MyHomePage(),
+    MainPage(),
     // FlexLayoutTestRoute(),
     // TapboxA(),
     // ParentWidgetC(),
