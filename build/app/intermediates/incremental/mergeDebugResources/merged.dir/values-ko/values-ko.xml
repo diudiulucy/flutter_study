@@ -31,12 +31,20 @@
     <string name="camera">카메라</string>
     <string name="done">완료</string>
     <string name="done_all">모두 선택 완료</string>
+    <string msgid="475402237100444685" name="installation_cancelled">"설치가 취소되었습니다."</string>
+    <string msgid="863287960437940689" name="installation_failed">"설치할 수 없습니다."</string>
+    <string msgid="5968445461040787716" name="installing_module">"모듈 설치 중:"</string>
     <string name="msg_error">일시적인 오류가 발생했습니다. 잠시후에 다시 시도해주세요.</string>
     <string name="msg_full_image">더 이상 선택할 수 없습니다.</string>
     <string name="msg_no_image">앨범이 없습니다.\n사진을 찍어보세요!</string>
     <string name="msg_no_selected">선택된 이미지가 없습니다.</string>
     <string name="msg_permission">권한이 거부 됐습니다.</string>
+    <string msgid="6301633601645100427" name="nav_app_bar_navigate_up_description">"위로 이동"</string>
+    <string msgid="7456070600745802113" name="nav_app_bar_open_drawer_description">"탐색 창 열기"</string>
+    <string msgid="4702104660890557116" name="ok">"확인"</string>
+    <string msgid="8366783942222789124" name="progress">"진행 상황:"</string>
+    <string msgid="1065327189183624288" name="retry">"재시도"</string>
     <string msgid="146198913615257606" name="search_menu_title">"검색"</string>
-    <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
     <string name="str_all_view">전체사진</string>
 </resources>

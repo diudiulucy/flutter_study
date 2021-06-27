@@ -27,6 +27,14 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Бөлісу"</string>
     <string msgid="3300176832234831527" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g> қолданбасымен бөлісу"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Тасалау"</string>
+    <string msgid="475402237100444685" name="installation_cancelled">"Орнатудан бас тартылды."</string>
+    <string msgid="863287960437940689" name="installation_failed">"Орнатылмады."</string>
+    <string msgid="5968445461040787716" name="installing_module">"Орнатылатын модуль:"</string>
+    <string msgid="6301633601645100427" name="nav_app_bar_navigate_up_description">"Жоғары қарай жылжу"</string>
+    <string msgid="7456070600745802113" name="nav_app_bar_open_drawer_description">"Навигация тартпасын ашу"</string>
+    <string msgid="4702104660890557116" name="ok">"Жарайды"</string>
+    <string msgid="8366783942222789124" name="progress">"Орындалу барысы:"</string>
+    <string msgid="1065327189183624288" name="retry">"Қайталау"</string>
     <string msgid="146198913615257606" name="search_menu_title">"Іздеу"</string>
-    <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

@@ -74,9 +74,9 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
       // print("xiangjilieb ");
       // print(cameras.length);
       _cameraController = CameraController(
-        cameras.first,
+        cameras.last,
         // _cameraController.description,
-        ResolutionPreset.high,
+        ResolutionPreset.max,
         enableAudio: false,
         // imageFormatGroup: ImageFormatGroup.jpeg,
       );
@@ -138,9 +138,58 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
           _buildCameraArea(),
           _buildTopBar(),
           _buildAction(),
+          _buildTabs(),
         ],
       ),
     );
+  }
+
+  Widget _buildTabs() {
+    Widget child;
+    if (_cameraController != null && _cameraController.value.isInitialized) {
+      child = Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          RaisedButton(
+              color: Colors.white,
+              child: new Text('文字识别'),
+              onPressed: () {
+                setState(() {
+                  ocrType = OCR_TYPE.BASE;
+                });
+              }),
+          RaisedButton(
+              color: Colors.white,
+              child: new Text('身份证识别'),
+              onPressed: () {
+                setState(() {
+                  ocrType = OCR_TYPE.IDCARD;
+                });
+              }),
+          // RaisedButton(
+          //     color: Colors.white,
+          //     child: new Text('银行卡识别'),
+          //     onPressed: () {
+          //       setState(() {
+          //         ocrType = OCR_TYPE.BANKCARD;
+          //       });
+          //     }),
+          RaisedButton(
+              color: Colors.white,
+              child: new Text('表格'),
+              onPressed: () {
+                setState(() {
+                  ocrType = OCR_TYPE.FORM;
+                });
+              })
+        ],
+      );
+    } else {
+      child = Container(
+        color: Colors.black,
+      );
+    }
+    return Positioned(bottom: 120, left: 0, right: 0, child: child);
   }
 
   Widget _buildCameraArea() {
@@ -284,43 +333,43 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
       child = Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              RaisedButton(
-                  color: Colors.white,
-                  child: new Text('文字识别'),
-                  onPressed: () {
-                    setState(() {
-                      ocrType = OCR_TYPE.BASE;
-                    });
-                  }),
-              RaisedButton(
-                  color: Colors.white,
-                  child: new Text('身份证识别'),
-                  onPressed: () {
-                    setState(() {
-                      ocrType = OCR_TYPE.IDCARD;
-                    });
-                  }),
-              // RaisedButton(
-              //     color: Colors.white,
-              //     child: new Text('银行卡识别'),
-              //     onPressed: () {
-              //       setState(() {
-              //         ocrType = OCR_TYPE.BANKCARD;
-              //       });
-              //     }),
-              RaisedButton(
-                  color: Colors.white,
-                  child: new Text('表格'),
-                  onPressed: () {
-                    setState(() {
-                      ocrType = OCR_TYPE.FORM;
-                    });
-                  })
-            ],
-          ),
+          // Row(
+          //   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   children: [
+          //     RaisedButton(
+          //         color: Colors.white,
+          //         child: new Text('文字识别'),
+          //         onPressed: () {
+          //           setState(() {
+          //             ocrType = OCR_TYPE.BASE;
+          //           });
+          //         }),
+          //     RaisedButton(
+          //         color: Colors.white,
+          //         child: new Text('身份证识别'),
+          //         onPressed: () {
+          //           setState(() {
+          //             ocrType = OCR_TYPE.IDCARD;
+          //           });
+          //         }),
+          //     // RaisedButton(
+          //     //     color: Colors.white,
+          //     //     child: new Text('银行卡识别'),
+          //     //     onPressed: () {
+          //     //       setState(() {
+          //     //         ocrType = OCR_TYPE.BANKCARD;
+          //     //       });
+          //     //     }),
+          //     RaisedButton(
+          //         color: Colors.white,
+          //         child: new Text('表格'),
+          //         onPressed: () {
+          //           setState(() {
+          //             ocrType = OCR_TYPE.FORM;
+          //           });
+          //         })
+          //   ],
+          // ),
           OutlineButton(
               shape: CircleBorder(),
               color: Colors.grey,

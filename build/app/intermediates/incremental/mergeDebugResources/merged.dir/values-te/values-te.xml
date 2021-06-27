@@ -27,6 +27,14 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"వీరితో భాగస్వామ్యం చేయి"</string>
     <string msgid="3300176832234831527" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g>తో భాగస్వామ్యం చేయండి"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"కుదించండి"</string>
+    <string msgid="475402237100444685" name="installation_cancelled">"ఇన్‌స్టాలేషన్ రద్దయింది."</string>
+    <string msgid="863287960437940689" name="installation_failed">"ఇన్‌స్టాల్ చేయడం విఫలమైంది"</string>
+    <string msgid="5968445461040787716" name="installing_module">"మాడ్యూల్‌ను ఇన్‌స్టాల్ చేస్తోంది:"</string>
+    <string msgid="6301633601645100427" name="nav_app_bar_navigate_up_description">"పైకి నావిగేట్ చేయి"</string>
+    <string msgid="7456070600745802113" name="nav_app_bar_open_drawer_description">"నావిగేషన్ డ్రాయర్‌ను తెరవండి"</string>
+    <string msgid="4702104660890557116" name="ok">"సరే"</string>
+    <string msgid="8366783942222789124" name="progress">"ప్రోగ్రెస్:"</string>
+    <string msgid="1065327189183624288" name="retry">"మళ్లీ ప్రయత్నించు"</string>
     <string msgid="146198913615257606" name="search_menu_title">"వెతుకు"</string>
-    <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

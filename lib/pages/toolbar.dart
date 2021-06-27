@@ -5,7 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_study/pages/myinfo.dart';
 import 'package:flutter_study/pages/picselect.dart';
 import 'package:flutter_study/test/baiduocr.dart';
+import 'package:flutter_study/test/flex.dart';
 import 'package:flutter_study/test/newroute.dart';
+import 'package:flutter_study/test/tabbox.dart';
+import 'package:flutter_study/test/tabboxb.dart';
+import 'package:flutter_study/test/tabboxc.dart';
 import 'package:flutter_study/test/tiproute.dart';
 import 'DisplayPictureScreen.dart';
 import 'album.dart';
@@ -28,6 +32,10 @@ class _NavigationState extends State<ToolBar>
     PickSelect(),
     WatermarkPhoto(),
     MyHomePage(),
+    // FlexLayoutTestRoute(),
+    // TapboxA(),
+    // ParentWidgetC(),
+    // ParentWidget(),
     MyInfoPage()
   ];
 
