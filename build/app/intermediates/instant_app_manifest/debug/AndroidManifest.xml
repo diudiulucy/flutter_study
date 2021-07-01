@@ -110,7 +110,16 @@
             android:theme="@style/FishBunTheme" />
         <activity
             android:name="com.sangcomz.fishbun.ui.detail.DetailActivity"
-            android:theme="@style/DetailViewTheme" /> <!-- The activities will be merged into the manifest of the hosting app. -->
+            android:theme="@style/DetailViewTheme" />
+        <activity
+            android:name="com.amazonaws.mobileconnectors.cognitoauth.activities.CustomTabsManagerActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" /> <!-- The activities will be merged into the manifest of the hosting app. -->
         <activity
             android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity"
             android:enabled="false"

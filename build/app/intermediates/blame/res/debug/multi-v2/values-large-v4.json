@@ -4,7 +4,7 @@
             "outputFile": "E:\\Flutter\\Project\\MyWorkSpace\\flutter_study\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\a37d7647168a444700eada6776a3f208\\appcompat-1.0.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\lucy\\.gradle\\caches\\transforms-2\\files-2.1\\e69ad0feaffa778f731de9471c94d00d\\appcompat-1.2.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

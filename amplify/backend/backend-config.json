@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "flutterstudyda2cf64b": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "storage": {
+    "s3c06988d6": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
+  }
+}

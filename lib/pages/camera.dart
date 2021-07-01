@@ -439,6 +439,7 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
           onPointerUp: fixItem,
           child: ListView.separated(
             shrinkWrap: false,
+            // primary: false,
             scrollDirection: Axis.horizontal,
             itemCount: tabs.length,
             separatorBuilder: (BuildContext context, int index) => Container(
@@ -446,7 +447,7 @@ class _WatermarkPhotoState extends State<WatermarkPhoto>
               color: Colors.black,
             ),
             controller: _controller,
-            // itemExtent: 0.0, //强制高度为50.0
+            // itemExtent: 30, //强制高度为50.0
             itemBuilder: (BuildContext context, int index) {
               return _initItemView(context, index);
             },

@@ -1,6 +1,9 @@
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_flutter/amplify.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_study/amplifyconfiguration.dart';
 import 'package:flutter_study/pages/album.dart';
 import 'package:flutter_study/pages/camera.dart';
 import 'package:flutter_study/pages/login/LoginPage.dart';
@@ -40,11 +43,24 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final _authService = AuthService();
   // final _amplify = Amplify();
+  void _configureAmplify() async {
+    // AmplifyAuthCognito authPlugin = AmplifyAuthCognito();
+    Amplify.addPlugin(AmplifyAuthCognito());
+
+    try {
+      await Amplify.configure(amplifyconfig);
+      print('Successfully configured Amplify 🎉');
+    } catch (e) {
+      print('Could not configure Amplify ☠️');
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    _authService.showLogin();
+    _configureAmplify();
+    // _authService.showLogin();
+    _authService.checkAuthStatus();
   }
 
   @override
@@ -56,64 +72,64 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: ThemeUtils.currentColorTheme,
       ),
       // 注册路由表
-      routes: {
-        "new_page": (context) => NewRoute(),
-        "/": (context) => ToolBar(), //注册首页路由
-        "tip2": (context) {
-          return TipRoute(text: ModalRoute.of(context).settings.arguments);
-        },
-        "camera": (context) => WatermarkPhoto(),
-        "album": (context) => Album(),
-        "picselect": (context) => PickSelect(),
-        "login": (context) => LoginPage(),
-      },
-      // home: StreamBuilder<AuthState>(
-      //     // 2
-      //     stream: _authService.authStateController.stream,
-      //     builder: (context, snapshot) {
-      //       // 3
-      //       if (snapshot.hasData) {
-      //         return Navigator(
-      //           pages: [
-      //             // 4
-      //             // Show Login Page
-      //             if (snapshot.data.authFlowStatus == AuthFlowStatus.login)
-      //               MaterialPage(
-      //                   child: LoginPage(
-      //                       didProvideCredentials:
-      //                           _authService.loginWithCredentials,
-      //                       shouldShowSignUp: _authService.showSignUp)),
-      //             // Show Verification Code Page
-      //             if (snapshot.data.authFlowStatus ==
-      //                 AuthFlowStatus.verification)
-      //               MaterialPage(
-      //                   child: VerificationPage(
-      //                       didProvideVerificationCode:
-      //                           _authService.verifyCode)),
-      //             // Show Camera Flow
-      //             if (snapshot.data.authFlowStatus == AuthFlowStatus.session)
-      //               MaterialPage(
-      //                   child: CameraFlow(shouldLogOut: _authService.logOut)),
+      // routes: {
+      //   "new_page": (context) => NewRoute(),
+      //   "/": (context) => ToolBar(), //注册首页路由
+      //   "tip2": (context) {
+      //     return TipRoute(text: ModalRoute.of(context).settings.arguments);
+      //   },
+      //   "camera": (context) => WatermarkPhoto(),
+      //   "album": (context) => Album(),
+      //   "picselect": (context) => PickSelect(),
+      //   "login": (context) => LoginPage(),
+      // },
+      home: StreamBuilder<AuthState>(
+          // 2
+          stream: _authService.authStateController.stream,
+          builder: (context, snapshot) {
+            // 3
+            if (snapshot.hasData) {
+              return Navigator(
+                pages: [
+                  // 4
+                  // Show Login Page
+                  if (snapshot.data.authFlowStatus == AuthFlowStatus.login)
+                    MaterialPage(
+                        child: LoginPage(
+                            didProvideCredentials:
+                                _authService.loginWithCredentials,
+                            shouldShowSignUp: _authService.showSignUp)),
+                  // Show Verification Code Page
+                  if (snapshot.data.authFlowStatus ==
+                      AuthFlowStatus.verification)
+                    MaterialPage(
+                        child: VerificationPage(
+                            didProvideVerificationCode:
+                                _authService.verifyCode)),
+                  // Show Camera Flow
+                  if (snapshot.data.authFlowStatus == AuthFlowStatus.session)
+                    MaterialPage(
+                        child: CameraFlow(shouldLogOut: _authService.logOut)),
 
-      //             // 5
-      //             // Show Sign Up Page
-      //             if (snapshot.data.authFlowStatus == AuthFlowStatus.signUp)
-      //               MaterialPage(
-      //                   child: SignUpPage(
-      //                       didProvideCredentials:
-      //                           _authService.signUpWithCredentials,
-      //                       shouldShowLogin: _authService.showLogin))
-      //           ],
-      //           onPopPage: (route, result) => route.didPop(result),
-      //         );
-      //       } else {
-      //         // 6
-      //         return Container(
-      //           alignment: Alignment.center,
-      //           child: CircularProgressIndicator(),
-      //         );
-      //       }
-      //     }),
+                  // 5
+                  // Show Sign Up Page
+                  if (snapshot.data.authFlowStatus == AuthFlowStatus.signUp)
+                    MaterialPage(
+                        child: SignUpPage(
+                            didProvideCredentials:
+                                _authService.signUpWithCredentials,
+                            shouldShowLogin: _authService.showLogin))
+                ],
+                onPopPage: (route, result) => route.didPop(result),
+              );
+            } else {
+              // 6
+              return Container(
+                alignment: Alignment.center,
+                child: CircularProgressIndicator(),
+              );
+            }
+          }),
     );
   }
 }
