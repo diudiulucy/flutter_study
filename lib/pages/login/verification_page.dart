@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/pages/login/analytics_events.dart';
+import 'package:flutter_study/pages/login/analytics_service.dart';
 
 class VerificationPage extends StatefulWidget {
   final ValueChanged<String> didProvideVerificationCode;
@@ -47,5 +49,6 @@ class _VerificationPageState extends State<VerificationPage> {
   void _verify() {
     final verificationCode = _verificationCodeController.text.trim();
     widget.didProvideVerificationCode(verificationCode);
+    AnalyticsService.log(VerificationEvent());
   }
 }

@@ -12,5 +12,11 @@
       "service": "S3",
       "providerPlugin": "awscloudformation"
     }
+  },
+  "analytics": {
+    "flutterstudy": {
+      "service": "Pinpoint",
+      "providerPlugin": "awscloudformation"
+    }
   }
 }

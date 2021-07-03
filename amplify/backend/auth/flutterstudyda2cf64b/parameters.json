@@ -1,6 +1,6 @@
 {
     "identityPoolName": "flutterstudyda2cf64b_identitypool_da2cf64b",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "flutteda2cf64b",
     "userPoolName": "flutterstudyda2cf64b_userpool_da2cf64b",
     "autoVerifiedAttributes": [

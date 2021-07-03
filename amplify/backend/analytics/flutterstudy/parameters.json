@@ -1,0 +1,21 @@
+{
+    "appName": "flutterstudy",
+    "roleName": "pinpointLambdaRoleae5202a7",
+    "cloudformationPolicyName": "cloudformationPolicyae5202a7",
+    "cloudWatchPolicyName": "cloudWatchPolicyae5202a7",
+    "pinpointPolicyName": "pinpointPolicyae5202a7",
+    "authPolicyName": "pinpoint_amplify_ae5202a7",
+    "unauthPolicyName": "pinpoint_amplify_ae5202a7",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

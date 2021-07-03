@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_study/pages/login/analytics_events.dart';
+import 'package:flutter_study/pages/login/analytics_service.dart';
 
 // 1
 class GalleryPage extends StatelessWidget {
@@ -16,7 +18,9 @@ class GalleryPage extends StatelessWidget {
       this.imageUrlsController,
       this.shouldLogOut,
       this.shouldShowCamera})
-      : super(key: key);
+      : super(key: key) {
+    AnalyticsService.log(ViewGalleryEvent());
+  }
 
   @override
   Widget build(BuildContext context) {
