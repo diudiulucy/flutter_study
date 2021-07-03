@@ -2,6 +2,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/pages/camera/camera_page.dart';
 import 'package:flutter_study/pages/camera/gallery_page.dart';
+import 'package:flutter_study/util/storage_service.dart';
 
 class CameraFlow extends StatefulWidget {
   // 1
@@ -16,12 +17,15 @@ class CameraFlow extends StatefulWidget {
 class _CameraFlowState extends State<CameraFlow> {
   // 2
   bool _shouldShowCamera = false;
+  StorageService _storageService;
   CameraDescription _camera;
 
   @override
   void initState() {
     super.initState();
     _getCamera();
+    _storageService = StorageService();
+    _storageService.getImages();
   }
 
   // 3
@@ -30,6 +34,7 @@ class _CameraFlowState extends State<CameraFlow> {
       // Show Gallery Page
       MaterialPage(
           child: GalleryPage(
+              imageUrlsController: _storageService.imageUrlsController,
               shouldLogOut: widget.shouldLogOut,
               shouldShowCamera: () => _toggleCameraOpen(true))),
 
@@ -39,6 +44,7 @@ class _CameraFlowState extends State<CameraFlow> {
             child: CameraPage(
                 camera: _camera,
                 didProvideImagePath: (imagePath) {
+                  this._storageService.uploadImageAtPath(imagePath);
                   this._toggleCameraOpen(false);
                 }))
     ];

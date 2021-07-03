@@ -86,6 +86,10 @@
                 android:resource="@xml/flutter_image_picker_file_paths" />
         </provider>
 
+        <service
+            android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
+            android:enabled="true" />
+
         <activity
             android:name="com.amplifyframework.devmenu.DeveloperMenuActivity"
             android:theme="@style/OverlayActivity" />

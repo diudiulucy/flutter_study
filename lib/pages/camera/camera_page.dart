@@ -1,5 +1,10 @@
 import 'package:camera/camera.dart';
+import 'dart:ui' as ui;
+import 'dart:typed_data';
+import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -57,7 +62,7 @@ class _CameraPageState extends State<CameraPage> {
       final filePath = '${DateTime.now().millisecondsSinceEpoch}.png';
       final path = join(tmpDirectory.path, filePath);
 
-      await _controller.takePicture();
+      await _controller.takePicture(path);
 
       widget.didProvideImagePath(path);
     } catch (e) {

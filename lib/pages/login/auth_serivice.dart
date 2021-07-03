@@ -69,8 +69,8 @@ class AuthService {
 
       // 4
       if (result.isSignUpComplete) {
-        loginWithCredentials(credentials);
-      } else {
+      //   loginWithCredentials(credentials);
+      // } else {
         // 5
         this._credentials = credentials;
 

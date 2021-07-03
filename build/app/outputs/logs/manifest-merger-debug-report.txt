@@ -5,14 +5,17 @@ INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\
 INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-60:12
 INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-60:12
 MERGED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:1:1-60:12
-MERGED from [:amplify_auth_cognito] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_auth_cognito\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:amplify_storage_s3] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_storage_s3\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:amplify_flutter] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:amplify_auth_cognito] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_auth_cognito\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:amplify_core] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:video_player] E:\Flutter\Project\MyWorkSpace\flutter_study\build\video_player\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:sqflite] E:\Flutter\Project\MyWorkSpace\flutter_study\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:image_picker] E:\Flutter\Project\MyWorkSpace\flutter_study\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-22:12
-MERGED from [:multi_image_picker] E:\Flutter\Project\MyWorkSpace\flutter_study\build\multi_image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider] E:\Flutter\Project\MyWorkSpace\flutter_study\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:multi_image_picker] E:\Flutter\Project\MyWorkSpace\flutter_study\build\multi_image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:camera] E:\Flutter\Project\MyWorkSpace\flutter_study\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-10:12
+MERGED from [com.amplifyframework:aws-storage-s3:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\22812dbdada0dd1ae3cd634af9d13a42\aws-storage-s3-1.16.13\AndroidManifest.xml:16:1-33:12
 MERGED from [com.amplifyframework:aws-auth-cognito:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\077e45706e1fe526f167ced6148d614a\aws-auth-cognito-1.16.13\AndroidManifest.xml:16:1-25:12
 MERGED from [com.amplifyframework:core:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\94833f5634a2ee844941d98b4af0f861\core-1.16.13\AndroidManifest.xml:16:1-33:12
 MERGED from [androidx.navigation:navigation-ui-ktx:2.3.2] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\995e82b3049cd60ead2b9a79851b37f4\navigation-ui-ktx-2.3.2\AndroidManifest.xml:17:1-24:12
@@ -25,6 +28,7 @@ MERGED from [androidx.media:media:1.0.0] C:\Users\lucy\.gradle\caches\transforms
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\088b18ec2c0a52ad3fcf6140a10bfdce\recyclerview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\e3eb8b15772ec829dcf209e8e802e713\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\47b340b0c8e357b683c33bb06ca19cf3\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.amazonaws:aws-android-sdk-s3:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\dc9da8923d1bdbb3c8b24145cd3a63ec\aws-android-sdk-s3-2.22.1\AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\e69ad0feaffa778f731de9471c94d00d\appcompat-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\4b1e78919950c270755fbcaeb8792772\aws-android-sdk-mobile-client-2.22.1\AndroidManifest.xml:2:1-21:12
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\5e3954a3d730dce93add09b13f6f00b5\glide-4.11.0\AndroidManifest.xml:2:1-12:12
@@ -75,10 +79,11 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.print:print:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\6d7a62f88f3d54b469312a470cec53c7\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\598256249c7c77b96135e9aeda8121e5\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\89da2d2b13f2717b13dbde907d33a117\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\097e716432581824afa5262ee0726fe7\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.amazonaws:aws-android-sdk-kms:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\781a176b4bd5eead8a59cf3dfd49c600\aws-android-sdk-kms-2.22.1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.amazonaws:aws-android-sdk-auth-core:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\4b941c028ced9ef3f00e288db77fa4bd\aws-android-sdk-auth-core-2.22.1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.amazonaws:aws-android-sdk-cognitoidentityprovider:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\a6c679efcb5cb74ebed2a3917e3d2069\aws-android-sdk-cognitoidentityprovider-2.22.1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.amazonaws:aws-android-sdk-core:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\8b30fa0837443f8a9ffac14612af9530\jetified-aws-android-sdk-core-2.22.1\AndroidManifest.xml:2:1-17:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\097e716432581824afa5262ee0726fe7\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\78c4fe1d4f437aa1eb101833c32820d1\lifecycle-viewmodel-ktx-2.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\92d92c906d46074c8734a0940af6ce59\lifecycle-viewmodel-2.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\e53f3dbecc434a816350a73eb26ed01a\constraintlayout-1.1.3\AndroidManifest.xml:2:1-11:12
@@ -114,6 +119,8 @@ MERGED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\An
 MERGED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:9:5-81
 MERGED from [:image_picker] E:\Flutter\Project\MyWorkSpace\flutter_study\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-81
 MERGED from [:image_picker] E:\Flutter\Project\MyWorkSpace\flutter_study\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-81
+MERGED from [com.amplifyframework:aws-storage-s3:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\22812dbdada0dd1ae3cd634af9d13a42\aws-storage-s3-1.16.13\AndroidManifest.xml:25:5-81
+MERGED from [com.amplifyframework:aws-storage-s3:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\22812dbdada0dd1ae3cd634af9d13a42\aws-storage-s3-1.16.13\AndroidManifest.xml:25:5-81
 	android:name
 		ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:9:22-78
 uses-permission#android.permission.CAMERA
@@ -128,6 +135,8 @@ application
 ADDED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml:12:5-59:19
 MERGED from [:image_picker] E:\Flutter\Project\MyWorkSpace\flutter_study\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-20:19
 MERGED from [:image_picker] E:\Flutter\Project\MyWorkSpace\flutter_study\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-20:19
+MERGED from [com.amplifyframework:aws-storage-s3:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\22812dbdada0dd1ae3cd634af9d13a42\aws-storage-s3-1.16.13\AndroidManifest.xml:27:5-31:19
+MERGED from [com.amplifyframework:aws-storage-s3:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\22812dbdada0dd1ae3cd634af9d13a42\aws-storage-s3-1.16.13\AndroidManifest.xml:27:5-31:19
 MERGED from [com.amplifyframework:core:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\94833f5634a2ee844941d98b4af0f861\core-1.16.13\AndroidManifest.xml:27:5-31:19
 MERGED from [com.amplifyframework:core:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\94833f5634a2ee844941d98b4af0f861\core-1.16.13\AndroidManifest.xml:27:5-31:19
 MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\872b94ebb48f432d35c8c0071355523e\jetified-FishBun-0.11.2\AndroidManifest.xml:11:5-32:19
@@ -208,22 +217,28 @@ INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\
 INJECTED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml
 MERGED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml
 MERGED from E:\Flutter\Project\MyWorkSpace\flutter_study\android\app\src\main\AndroidManifest.xml
-MERGED from [:amplify_auth_cognito] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_auth_cognito\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:amplify_auth_cognito] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_auth_cognito\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:amplify_storage_s3] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_storage_s3\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:amplify_storage_s3] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_storage_s3\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:amplify_flutter] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:amplify_flutter] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:amplify_auth_cognito] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_auth_cognito\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:amplify_auth_cognito] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_auth_cognito\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:amplify_core] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:amplify_core] E:\Flutter\Project\MyWorkSpace\flutter_study\build\amplify_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:video_player] E:\Flutter\Project\MyWorkSpace\flutter_study\build\video_player\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:video_player] E:\Flutter\Project\MyWorkSpace\flutter_study\build\video_player\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] E:\Flutter\Project\MyWorkSpace\flutter_study\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] E:\Flutter\Project\MyWorkSpace\flutter_study\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:image_picker] E:\Flutter\Project\MyWorkSpace\flutter_study\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:image_picker] E:\Flutter\Project\MyWorkSpace\flutter_study\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:multi_image_picker] E:\Flutter\Project\MyWorkSpace\flutter_study\build\multi_image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:multi_image_picker] E:\Flutter\Project\MyWorkSpace\flutter_study\build\multi_image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] E:\Flutter\Project\MyWorkSpace\flutter_study\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] E:\Flutter\Project\MyWorkSpace\flutter_study\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:multi_image_picker] E:\Flutter\Project\MyWorkSpace\flutter_study\build\multi_image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:multi_image_picker] E:\Flutter\Project\MyWorkSpace\flutter_study\build\multi_image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:camera] E:\Flutter\Project\MyWorkSpace\flutter_study\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:camera] E:\Flutter\Project\MyWorkSpace\flutter_study\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [com.amplifyframework:aws-storage-s3:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\22812dbdada0dd1ae3cd634af9d13a42\aws-storage-s3-1.16.13\AndroidManifest.xml:21:5-23:41
+MERGED from [com.amplifyframework:aws-storage-s3:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\22812dbdada0dd1ae3cd634af9d13a42\aws-storage-s3-1.16.13\AndroidManifest.xml:21:5-23:41
 MERGED from [com.amplifyframework:aws-auth-cognito:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\077e45706e1fe526f167ced6148d614a\aws-auth-cognito-1.16.13\AndroidManifest.xml:21:5-23:41
 MERGED from [com.amplifyframework:aws-auth-cognito:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\077e45706e1fe526f167ced6148d614a\aws-auth-cognito-1.16.13\AndroidManifest.xml:21:5-23:41
 MERGED from [com.amplifyframework:core:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\94833f5634a2ee844941d98b4af0f861\core-1.16.13\AndroidManifest.xml:21:5-23:41
@@ -248,6 +263,8 @@ MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\lucy\.gradle
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\e3eb8b15772ec829dcf209e8e802e713\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\47b340b0c8e357b683c33bb06ca19cf3\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\47b340b0c8e357b683c33bb06ca19cf3\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.amazonaws:aws-android-sdk-s3:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\dc9da8923d1bdbb3c8b24145cd3a63ec\aws-android-sdk-s3-2.22.1\AndroidManifest.xml:7:5-9:41
+MERGED from [com.amazonaws:aws-android-sdk-s3:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\dc9da8923d1bdbb3c8b24145cd3a63ec\aws-android-sdk-s3-2.22.1\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\e69ad0feaffa778f731de9471c94d00d\appcompat-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\e69ad0feaffa778f731de9471c94d00d\appcompat-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\4b1e78919950c270755fbcaeb8792772\aws-android-sdk-mobile-client-2.22.1\AndroidManifest.xml:13:5-16:96
@@ -348,14 +365,16 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\lucy\.gradle\cac
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\598256249c7c77b96135e9aeda8121e5\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\89da2d2b13f2717b13dbde907d33a117\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\89da2d2b13f2717b13dbde907d33a117\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\097e716432581824afa5262ee0726fe7\cardview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\097e716432581824afa5262ee0726fe7\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.amazonaws:aws-android-sdk-kms:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\781a176b4bd5eead8a59cf3dfd49c600\aws-android-sdk-kms-2.22.1\AndroidManifest.xml:7:5-9:41
+MERGED from [com.amazonaws:aws-android-sdk-kms:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\781a176b4bd5eead8a59cf3dfd49c600\aws-android-sdk-kms-2.22.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.amazonaws:aws-android-sdk-auth-core:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\4b941c028ced9ef3f00e288db77fa4bd\aws-android-sdk-auth-core-2.22.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.amazonaws:aws-android-sdk-auth-core:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\4b941c028ced9ef3f00e288db77fa4bd\aws-android-sdk-auth-core-2.22.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.amazonaws:aws-android-sdk-cognitoidentityprovider:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\a6c679efcb5cb74ebed2a3917e3d2069\aws-android-sdk-cognitoidentityprovider-2.22.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.amazonaws:aws-android-sdk-cognitoidentityprovider:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\a6c679efcb5cb74ebed2a3917e3d2069\aws-android-sdk-cognitoidentityprovider-2.22.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.amazonaws:aws-android-sdk-core:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\8b30fa0837443f8a9ffac14612af9530\jetified-aws-android-sdk-core-2.22.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.amazonaws:aws-android-sdk-core:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\8b30fa0837443f8a9ffac14612af9530\jetified-aws-android-sdk-core-2.22.1\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\097e716432581824afa5262ee0726fe7\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\097e716432581824afa5262ee0726fe7\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\78c4fe1d4f437aa1eb101833c32820d1\lifecycle-viewmodel-ktx-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\78c4fe1d4f437aa1eb101833c32820d1\lifecycle-viewmodel-ktx-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\92d92c906d46074c8734a0940af6ce59\lifecycle-viewmodel-2.2.0\AndroidManifest.xml:20:5-22:41
@@ -404,6 +423,12 @@ uses-permission#android.permission.RECORD_AUDIO
 ADDED from [:camera] E:\Flutter\Project\MyWorkSpace\flutter_study\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-71
 	android:name
 		ADDED from [:camera] E:\Flutter\Project\MyWorkSpace\flutter_study\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-68
+service#com.amazonaws.mobileconnectors.s3.transferutility.TransferService
+ADDED from [com.amplifyframework:aws-storage-s3:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\22812dbdada0dd1ae3cd634af9d13a42\aws-storage-s3-1.16.13\AndroidManifest.xml:28:9-30:38
+	android:enabled
+		ADDED from [com.amplifyframework:aws-storage-s3:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\22812dbdada0dd1ae3cd634af9d13a42\aws-storage-s3-1.16.13\AndroidManifest.xml:30:13-35
+	android:name
+		ADDED from [com.amplifyframework:aws-storage-s3:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\22812dbdada0dd1ae3cd634af9d13a42\aws-storage-s3-1.16.13\AndroidManifest.xml:29:13-93
 activity#com.amplifyframework.devmenu.DeveloperMenuActivity
 ADDED from [com.amplifyframework:core:1.16.13] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\94833f5634a2ee844941d98b4af0f861\core-1.16.13\AndroidManifest.xml:28:9-30:54
 	android:theme
@@ -441,11 +466,13 @@ ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\lucy\.gradle\caches\transforms
 	android:name
 		ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\872b94ebb48f432d35c8c0071355523e\jetified-FishBun-0.11.2\AndroidManifest.xml:30:13-73
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [com.amazonaws:aws-android-sdk-mobile-client:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\4b1e78919950c270755fbcaeb8792772\aws-android-sdk-mobile-client-2.22.1\AndroidManifest.xml:19:5-79
+ADDED from [com.amazonaws:aws-android-sdk-s3:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\dc9da8923d1bdbb3c8b24145cd3a63ec\aws-android-sdk-s3-2.22.1\AndroidManifest.xml:11:5-79
+MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\4b1e78919950c270755fbcaeb8792772\aws-android-sdk-mobile-client-2.22.1\AndroidManifest.xml:19:5-79
+MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\4b1e78919950c270755fbcaeb8792772\aws-android-sdk-mobile-client-2.22.1\AndroidManifest.xml:19:5-79
 MERGED from [com.google.android.exoplayer:exoplayer-core:2.8.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\acafaa67d4c9e0c4323b735c8bb0d7ae\jetified-exoplayer-core-2.8.0\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.exoplayer:exoplayer-core:2.8.0] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\acafaa67d4c9e0c4323b735c8bb0d7ae\jetified-exoplayer-core-2.8.0\AndroidManifest.xml:24:5-79
 	android:name
-		ADDED from [com.amazonaws:aws-android-sdk-mobile-client:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\4b1e78919950c270755fbcaeb8792772\aws-android-sdk-mobile-client-2.22.1\AndroidManifest.xml:19:22-76
+		ADDED from [com.amazonaws:aws-android-sdk-s3:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\dc9da8923d1bdbb3c8b24145cd3a63ec\aws-android-sdk-s3-2.22.1\AndroidManifest.xml:11:22-76
 activity#com.amazonaws.mobileconnectors.cognitoauth.activities.CustomTabsManagerActivity
 ADDED from [com.amazonaws:aws-android-sdk-cognitoauth:2.22.1] C:\Users\lucy\.gradle\caches\transforms-2\files-2.1\718c33d75ab3a95eab10b7b4e6b3dacd\aws-android-sdk-cognitoauth-2.22.1\AndroidManifest.xml:13:9-17:75
 	android:launchMode

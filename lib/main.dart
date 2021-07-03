@@ -1,5 +1,6 @@
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify.dart';
+import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -45,7 +46,7 @@ class _MyAppState extends State<MyApp> {
   // final _amplify = Amplify();
   void _configureAmplify() async {
     // AmplifyAuthCognito authPlugin = AmplifyAuthCognito();
-    Amplify.addPlugin(AmplifyAuthCognito());
+    Amplify.addPlugins([AmplifyAuthCognito(), AmplifyStorageS3()]);
 
     try {
       await Amplify.configure(amplifyconfig);
